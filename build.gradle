@@ -1,0 +1,39 @@
+import com.thoughtworks.gauge.gradle.GaugeTask
+
+plugins {
+    id 'java'
+    id 'org.gauge' version '1.8.2'
+}
+
+group 'gdhi-automation-version2'
+version '1.0-SNAPSHOT'
+description  "Gauge WebDriver tests for GDHI project"
+
+sourceCompatibility = 17
+targetCompatibility = 17
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    implementation 'com.thoughtworks.gauge:gauge-java:0.9.1'
+    implementation 'com.googlecode.json-simple:json-simple:1.1.1'
+    implementation 'org.json:json:20220924'
+    testImplementation 'junit:junit:4.12'
+    testImplementation group: 'org.assertj', name: 'assertj-core', version: '3.20.2'
+    testImplementation 'io.rest-assured:rest-assured:5.3.0'
+    testImplementation 'org.seleniumhq.selenium:selenium-java:3.11.0'
+    testImplementation 'org.junit.jupiter:junit-jupiter-api:5.9.1'
+}
+
+task gaugeQA(type: GaugeTask) {
+    doFirst {
+        println 'Running tests in QA environment...'
+        gauge {
+            specsDir = 'specs'
+            env = 'qa'
+            additionalFlags = '--verbose'
+        }
+    }
+}
