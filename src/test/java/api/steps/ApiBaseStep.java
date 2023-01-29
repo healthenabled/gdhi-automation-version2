@@ -21,7 +21,8 @@ public class ApiBaseStep {
     }
 
     @Step("Send the <GET> request to <PHASES>")
-    public void sendRequest(String method, String path){
+    public Response sendRequest(String method, String path){
+        Base_url = System.getenv("API_URL");
         System.out.println(Base_url +"------"+ System.getenv(path));
         RestAssured.baseURI = Base_url + System.getenv(path);
         requestSpecification = given();
@@ -31,8 +32,8 @@ public class ApiBaseStep {
                 break;
             default:
                 Assertions.fail("Given method is not acceptable");
-                return;
         }
+        return response;
     }
 
     @Step("Then the Status code should be <code>")

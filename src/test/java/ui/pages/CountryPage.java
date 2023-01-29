@@ -29,7 +29,7 @@ public class CountryPage extends BasePage {
     @FindBy(xpath = "//div[contains(@class,'country-summary-text')]")
     private WebElement countrySummaryText;
 
-    @FindBy(xpath = "//div[contains(@class,'country-summary-title')][text()='Resources']")
+    @FindBy(xpath = "//div[contains(@class,'country-resource-title header-bold')][text()='Resources']")
     private WebElement resourcesText;
 
     @FindBy(xpath = "//ul[@class='country-text']")

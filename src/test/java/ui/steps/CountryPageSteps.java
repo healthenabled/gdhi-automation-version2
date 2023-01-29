@@ -1,8 +1,16 @@
 package ui.steps;
 
+import api.steps.ApiBaseStep;
+import com.github.javaparser.metamodel.LiteralExprMetaModel;
+import com.thoughtworks.gauge.Gauge;
 import com.thoughtworks.gauge.Step;
 import com.thoughtworks.gauge.Table;
+import io.restassured.response.Response;
+import org.json.JSONArray;
+import org.json.JSONObject;
 import ui.data.DataFactory;
+
+import java.util.ArrayList;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -16,7 +24,7 @@ public class CountryPageSteps extends BaseStep {
     @Step("User navigates to list of countries page")
     public void User_goes_to_list_of_countries_page() {
         landingPage.visitListOfCountries();
-        assertTrue(listOfCountriesPage.verifyListOfCountriesPageDetails());
+            assertTrue(listOfCountriesPage.verifyListOfCountriesPageDetails());
 
     }
 
@@ -44,10 +52,19 @@ public class CountryPageSteps extends BaseStep {
 listOfCountriesPage.navigateToCountryPage(countryName);
     }
 
-    @Step("User should see below list of Countries <table>")
-    public void verifyCountryList(Table table) {
-        System.out.println(table.getColumnValues("countries"));
+    @Step("User should see the list of Countries")
+    public void verifyCountryList() {
+        ApiBaseStep Api = new ApiBaseStep();
+        Response response = Api.sendRequest("GET","HEALTH_INDICATOR_COUNTRIES");
+        JSONObject jsonobject = new JSONObject(response.getBody().asString());
+        JSONArray jsonarray = new JSONArray(jsonobject.getJSONArray("countryHealthScores"));
+        ArrayList<String> countries = new ArrayList();
+        jsonarray.forEach(item -> {
+            JSONObject obj = (JSONObject) item;
+            countries.add(obj.getString("countryName"));
+        });
+        System.out.println("Expected countries ::: "+countries);
         System.out.println("Actual countries :::" +listOfCountriesPage.getActualListOfCounties());
-        assertTrue(listOfCountriesPage.getActualListOfCounties().containsAll(table.getColumnValues("countries")));
+        assertTrue((countries.containsAll(listOfCountriesPage.getActualListOfCounties())));
     }
 }

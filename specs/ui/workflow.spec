@@ -1,9 +1,10 @@
  # User views the overall digital health maturity
-
+Tags: ui
 This scenario verifies the various functionalities related to the overall digital health maturity
      
 ## User submits responses to a country and verifies various details
 
+* Given when the User opens the Brower
 * User navigates to admin page
 * User generates input form URL for "Sri Lanka"
 * User copies the form link for "Sri Lanka"
@@ -30,3 +31,4 @@ This scenario verifies the various functionalities related to the overall digita
 ////* User goes the country details page
 * User should see the data they have submitted for "Sri Lanka"
 ////* User should see the footer information
+* Close the Browser

@@ -2,9 +2,9 @@
 Tags: ui
 This scenario verifies the lis of indicators questions
 
-## Verify the lis of indicators questions is displayed as in database
-
 * Given when the User opens the Brower
+
+## Verify the lis of indicators questions is displayed as in database
 * User opens the application url in a browser
 * The default map view appears
 * User navigates to the list of indicators page
@@ -18,5 +18,10 @@ This scenario verifies the lis of indicators questions
     | infrastructure                     |
     | services and applications          |
 
-//* User should see the list of indicators questionnaire
+## Verify the lis of Countries questions is displayed as in database
+* User opens the application url in a browser
+* The default map view appears
+* User navigates to the list of countries page
+* User should see the list of Countries
+
 * Close the Browser

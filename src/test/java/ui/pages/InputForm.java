@@ -20,10 +20,10 @@ public class InputForm extends BasePage {
     @FindBy(css = "button.submit-btn.btn.btn-red")
     private WebElement rejectBtn;
 
-    @FindBy(xpath = "//button[text()=' Save ']")
+    @FindBy(xpath = "//button[text()='Save']")
     private WebElement reviewPageSaveBtn;
 
-    @FindBy(xpath = "//button[text()=' Download PDF']")
+    @FindBy(xpath = "//button[text()='DOWNLOAD PDF']")
     private WebElement reviewPageDownloadPDFBtn;
 
     @FindBy(id = "countryName")
@@ -95,7 +95,7 @@ public class InputForm extends BasePage {
     @FindBy(xpath = "//*[contains(text(),'Data is now live')]")
     private WebElement publishSuccessMessage;
 
-    @FindBy(xpath = "//button[text()=' Save as Draft']")
+    @FindBy(xpath = "//button[text()='SAVE AS DRAFT']")
     private WebElement saveBtn;
 
     @FindBy(css = "button.submit-btn.btn.btn-green")
@@ -279,7 +279,7 @@ sleep(1);
     }
 
     public boolean isPublishSuccess() {
-
+        sleep(2);
         return publishSuccessMessage.isDisplayed();
 
     }

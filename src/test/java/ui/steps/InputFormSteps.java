@@ -85,7 +85,7 @@ public class InputFormSteps extends BaseStep {
 
     @Step("User publishes the data for <Sri Lanka>")
     public void publishData(String countryName) {
-        assertEquals(inputForm.verifyPublishReviewDataConfirmationText(),"You are about to publish digital health index form for Sri Lanka, this cannot be reverted. Do you want to continue?");
+        assertEquals(inputForm.verifyPublishReviewDataConfirmationText(),"You are about to publish digital health index form for Sri Lanka. This cannot be reverted. Do you want to continue?");
 //        inputForm.confirmPublisData();
         assertTrue(inputForm.isPublishSuccess());
     }
