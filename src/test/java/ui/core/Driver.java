@@ -2,6 +2,7 @@ package ui.core;
 
 import com.thoughtworks.gauge.AfterSuite;
 import com.thoughtworks.gauge.Step;
+import io.github.bonigarcia.wdm.WebDriverManager;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
@@ -24,11 +25,13 @@ public class Driver {
         else{
             String browser = System.getenv("BROWSER");
             if (browser.equalsIgnoreCase("firefox")) {
+                WebDriverManager.firefoxdriver().setup();
                 webDriver = new FirefoxDriver();
             }
 
             if (browser.equalsIgnoreCase("chrome")) {
-                System.setProperty("webdriver.chrome.driver", System.getenv("CHROME_DRIVER_PATH"));
+                //System.setProperty("webdriver.chrome.driver", System.getenv("CHROME_DRIVER_PATH"));
+                WebDriverManager.chromedriver().setup();
                 if (System.getenv("CHROME_HEADLESS") != null) {
                     ChromeOptions chromeOptions = new ChromeOptions();
                     chromeOptions.addArguments("headless");

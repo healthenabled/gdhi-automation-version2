@@ -1,4 +1,4 @@
-# User views the list of indicator questions
+# User views the list of indicator questions and countries page
 Tags: ui
 This scenario verifies the lis of indicators questions
 
