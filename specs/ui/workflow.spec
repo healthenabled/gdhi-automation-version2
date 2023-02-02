@@ -25,10 +25,10 @@ This scenario verifies the various functionalities related to the overall digita
 * User opens the application url in a browser
 * The default map view appears
 * User navigates to list of countries page
-* User should see the "Sri Lanka" and "2" in list of published countries page along with phase
+* User should see the "Sri Lanka" and "3" in list of published countries page along with phase
 * User navigates to country details page for "Sri Lanka"
 //* User should see the digital health indicator data
 ////* User goes the country details page
-* User should see the data they have submitted for "Sri Lanka"
+* User should see the data they have submitted for "Sri Lanka" and score "3"
 ////* User should see the footer information
 * Close the Browser

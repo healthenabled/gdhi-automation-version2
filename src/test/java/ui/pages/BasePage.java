@@ -80,7 +80,7 @@ class BasePage extends Driver {
     void focusOnElement(WebElement element) {
         Actions action = new Actions(driver);
         action.moveToElement(element);
-        action.sendKeys(Keys.ARROW_DOWN);
+        //action.sendKeys(Keys.ARROW_DOWN);
         action.perform();
     }
 

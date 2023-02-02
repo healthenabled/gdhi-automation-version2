@@ -32,7 +32,7 @@ public class DataFactory {
         data.put("indicator3Score", "3");
         data.put("indicator4Score", "4");
         data.put("indicator5Score", "5");
-        data.put("indicator6Score", "0");
+        data.put("indicator6Score", "2");
         data.put("indicator7Score", "1");
         data.put("indicator8Score", "2");
         data.put("indicator9Score", "3");

@@ -11,7 +11,7 @@ import java.util.List;
 
 public class InputForm extends BasePage {
 
-    @FindBy(xpath = "//button[@class='submit-btn btn btn-green']/i")
+    @FindBy(xpath = "//button[normalize-space()='SUBMIT']")
     private WebElement submitButton;
 
     @FindBy(css = "button.submit-btn.btn.btn-green")
@@ -20,52 +20,52 @@ public class InputForm extends BasePage {
     @FindBy(css = "button.submit-btn.btn.btn-red")
     private WebElement rejectBtn;
 
-    @FindBy(xpath = "//button[text()='Save']")
+    @FindBy(xpath = "//button[normalize-space(text())='Save']")
     private WebElement reviewPageSaveBtn;
 
-    @FindBy(xpath = "//button[text()='DOWNLOAD PDF']")
+    @FindBy(xpath = "//button[normalize-space(text()='DOWNLOAD PDF')]")
     private WebElement reviewPageDownloadPDFBtn;
 
     @FindBy(id = "countryName")
     private WebElement countryName;
 
-    @FindBy(id = "Organisation")
+    @FindBy(xpath = "//input[@id='Organisation']")
     private WebElement organisation;
 
-    @FindBy(id = "date")
+    @FindBy(xpath = "//input[@id='date']")
     private WebElement date;
 
-    @FindBy(id = "nameofPersonEnteringData")
+    @FindBy(xpath = "//input[@id='nameofPersonEnteringData']")
     private WebElement dataEntryName;
 
-    @FindBy(id = "roleOfPersonEnteringData")
+    @FindBy(xpath = "//input[@id='roleOfPersonEnteringData']")
     private WebElement dataEntryRole;
 
-    @FindBy(id = "emailOfPersonEnteringData")
+    @FindBy(xpath = "//input[@id='emailOfPersonEnteringData']")
     private WebElement dataEntryEmail;
 
-    @FindBy(id = "nameofPersonApprovedData")
+    @FindBy(xpath = "//input[@id='nameofPersonApprovedData']")
     private WebElement dataCollectorName;
 
-    @FindBy(id = "roleofPersonApprovedData")
+    @FindBy(xpath = "//input[@id='roleofPersonApprovedData']")
     private WebElement dataCollectorRole;
 
-    @FindBy(id = "emailofPersonApprovedData")
+    @FindBy(xpath = "//input[@id='emailofPersonApprovedData']")
     private WebElement dataCollectorEmail;
 
-    @FindBy(id = "nameofCountryContact")
+    @FindBy(xpath = "//input[@id='nameofCountryContact']")
     private WebElement countryContactName;
 
-    @FindBy(id = "roleofCountryContact")
+    @FindBy(xpath = "//input[@id='roleofCountryContact']")
     private WebElement countryContactRole;
 
-    @FindBy(id = "emailofCountryContact")
+    @FindBy(xpath = "//input[@id='emailofCountryContact']")
     private WebElement countryContactEmail;
 
-    @FindBy(id = "resource1")
+    @FindBy(xpath = "//input[@id='resource1']")
     private WebElement resource1;
 
-    @FindBy(id = "resource2")
+    @FindBy(xpath = "//input[@id='resource2']")
     private WebElement resource2;
 
     @FindBy(id = "resource3")
@@ -77,7 +77,7 @@ public class InputForm extends BasePage {
     @FindBy(id = "resource5")
     private WebElement resource5;
 
-    @FindBy(id = "countrySummary")
+    @FindBy(xpath = "//textarea[@id='countrySummary']")
     private WebElement countrySummary;
 
     @FindBy(css = ".success")
@@ -95,7 +95,7 @@ public class InputForm extends BasePage {
     @FindBy(xpath = "//*[contains(text(),'Data is now live')]")
     private WebElement publishSuccessMessage;
 
-    @FindBy(xpath = "//button[text()='SAVE AS DRAFT']")
+    @FindBy(xpath = "//button[normalize-space()='SAVE AS DRAFT']")
     private WebElement saveBtn;
 
     @FindBy(css = "button.submit-btn.btn.btn-green")
@@ -107,7 +107,7 @@ public class InputForm extends BasePage {
     @FindBy(css = "div.accordion.expanded>div.accordion-content>div>div>div.row.description_container>textarea.description")
     private WebElement questionRationaleText;
 
-    @FindBy(xpath = "//div[@class='tab-content'][2]/div/table[@id='fifthTable']/tbody/tr/td[text()='Sri Lanka']/../td/button[text()='Review']")
+    @FindBy(xpath = "(//td[contains(text(),'Sri Lanka')])[2]/../td/button[normalize-space(text()) = 'Review']")
     private WebElement reviewBtnForCountry;
 
     @FindBy(xpath = "//div[@class='dg-content']")
@@ -173,10 +173,10 @@ public class InputForm extends BasePage {
         for (WebElement indicatorElement : indicatorElements) {
 
                         counter = indicatorElements.indexOf(indicatorElement) + 1;
-            int indicatorPhase = Integer.parseInt(data.get("indicator" + counter + "Score")) + 1;
+            int indicatorPhase = Integer.parseInt(data.get("indicator" + counter + "Score"));
             sleep(1);
-            indicatorElement.findElement(By.cssSelector("div.scores:nth-child(3)>label.radio-container")).click();
-
+            indicatorElement.findElement(By.cssSelector("div.scores:nth-child("+(2+indicatorPhase)+")>label.radio-container")).click();
+            //div.scores:nth-child(3)>label.radio-container
 //             chooseIndicatorPhase(indicatorElement,indicatorPhase);
             WebElement rationale = indicatorElement.findElement(By.cssSelector("div.row.description_container>textarea"));
             focusOnElement(rationale);
@@ -279,7 +279,7 @@ sleep(1);
     }
 
     public boolean isPublishSuccess() {
-        sleep(2);
+        //sleep(2);
         return publishSuccessMessage.isDisplayed();
 
     }

@@ -16,9 +16,9 @@ import static org.junit.jupiter.api.Assertions.*;
 
 public class CountryPageSteps extends BaseStep {
 
-    @Step("User should see the data they have submitted for <countryName>")
-    public void User_sees_country_details(String countryName) {
-        assertTrue(countryPage.areDetailsValid(DataFactory.getValidInputFormDataFor(countryName)));
+    @Step("User should see the data they have submitted for <countryName> and score <3>")
+    public void User_sees_country_details(String countryName, String score) {
+        assertTrue(countryPage.areDetailsValid(DataFactory.getValidInputFormDataFor(countryName), score));
     }
 
     @Step("User navigates to list of countries page")
@@ -41,7 +41,7 @@ public class CountryPageSteps extends BaseStep {
     }
 
 
-    @Step("User should see the <Sri Lanka> and <4> in list of published countries page along with phase")
+    @Step("User should see the <Sri Lanka> and <3> in list of published countries page along with phase")
     public void verifyPublishedCountryDisplayedInList(String countryName, String countryScore) {
         listOfCountriesPage.iscountryNameDisplayed(countryName);
         listOfCountriesPage.iscountryScoreDisplayed(countryScore);

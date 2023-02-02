@@ -14,7 +14,7 @@ public class AdminPage extends BasePage {
     @FindBy(css = "div .autocomplete__inputs input")
     private WebElement autocompleteTextBox;
 
-    @FindBy(xpath = "//button[text()='Generate URL']")
+    @FindBy(xpath = "//button[normalize-space(text()) = 'Generate URL']")
     private WebElement generateURLButton;
 
     @FindBy(xpath = "//*[contains(text(),'URL Generated Successfully')]")
@@ -29,10 +29,10 @@ public class AdminPage extends BasePage {
     @FindBy(id = "url-box")
     private WebElement urlBox;
 
-    @FindBy(xpath = "//ul[@class='tablist']/li[text()='Review Pending']")
+    @FindBy(xpath = "//li[normalize-space()='Review Pending']")
     WebElement reviewPendingTab;
 
-    @FindBy(xpath = "//div[@class='tab-content'][2]/div/table[@id='fifthTable']/tbody/tr/td[text()='Sri Lanka']")
+    @FindBy(xpath = "//div[@class='tab-content'][2]/div/table[@id='fifthTable']/tbody/tr/td[normalize-space(text()='Sri Lanka')]")
     private WebElement countryNameInTable;
 
     public AdminPage() {
@@ -56,12 +56,16 @@ public class AdminPage extends BasePage {
         autoCompleteSearch(autocompleteTextBox, country);
         sleep(2);
         generateURLButton.click();
-        waitForPageToLoad();
+        //waitForPageToLoad();
 
     }
 
+    public void clickOnGenerateURLbutton(){
+        generateURLButton.click();
+    }
+
     public boolean verifyURLGeneratedSuccessfully() {
-        sleep(1);
+        //sleep(1);
         return urlGenerationSuccessMessageText.isDisplayed();
     }
 

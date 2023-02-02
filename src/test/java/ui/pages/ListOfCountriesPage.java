@@ -38,7 +38,8 @@ public class ListOfCountriesPage extends BasePage {
     }
 
     public boolean iscountryScoreDisplayed(String countryScore) {
-        return isElementVisible(countryScoreText);
+        return isElementVisible(driver.findElement(By.xpath("//span[@class='country-name'][text()='Sri Lanka']" +
+                "/parent::li/span[1][text()='"+countryScore+"']")));
     }
 
     public boolean iscountryNameDisplayed(String countryName) {

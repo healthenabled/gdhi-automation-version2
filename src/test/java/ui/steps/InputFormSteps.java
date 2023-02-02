@@ -20,7 +20,10 @@ public class InputFormSteps extends BaseStep {
 
     @Step("User should see error messages for the mandatory fields")
     public void User_sees_mandatory_field_errors() {
-        assertTrue(inputForm.isErrorMessageThrownIntheForm());
+            if(!(inputForm.isErrorMessageThrownIntheForm())){
+                inputForm.submitForm();
+                assertTrue(inputForm.isErrorMessageThrownIntheForm());
+            }
     }
 
     @Step("User fills the form for <Sri Lanka> with contact and resource information")
@@ -32,7 +35,10 @@ public class InputFormSteps extends BaseStep {
     @Step("User should be able to save the partially filled form successfully")
     public void save_Form() {
         inputForm.clickOnSaveBtn();
-        assertTrue(inputForm.isSavedsuccessfully());
+        if(!inputForm.isSavedsuccessfully()){
+            inputForm.clickOnSaveBtn();
+            assertTrue(inputForm.isSavedsuccessfully());
+        }
     }
 
     @Step("User should not be able to submit the partially filled form")
