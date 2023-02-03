@@ -22,5 +22,5 @@ UI and API automation tests for GDHI project using Gauge, WebDriver and RestAssu
 ## Running Specs based on Tags
 `./gradlew clean gauge -Ptags=\'<TagName>\' ` 
 
-for UI -> `./gradlew clean gauge -Ptags='<ui>' ` 
-for API -> `./gradlew clean gauge -Ptags='<api>' `
+for UI -> `./gradlew clean gauge -Ptags='ui' ` 
+for API -> `./gradlew clean gauge -Ptags='api' `
