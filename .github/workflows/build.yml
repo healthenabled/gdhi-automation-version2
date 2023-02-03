@@ -29,8 +29,6 @@ jobs:
        - name: Install curl
          run: sudo apt install curl
 
-       - run: ./gradlew wrapper --gradle-version=7.6 --distribution-type=bin
-
        - name: Install Gauge
          run: curl -SsL https://downloads.gauge.org/stable | sh
 
