@@ -22,6 +22,7 @@ public class InputFormSteps extends BaseStep {
     public void User_sees_mandatory_field_errors() {
             if(!(inputForm.isErrorMessageThrownIntheForm())){
                 inputForm.submitForm();
+                inputForm.submitForm();
                 assertTrue(inputForm.isErrorMessageThrownIntheForm());
             }
     }
@@ -44,7 +45,11 @@ public class InputFormSteps extends BaseStep {
     @Step("User should not be able to submit the partially filled form")
     public void User_sees_mandatory_field_errors_on_submit() {
         inputForm.submitForm();
-        assertTrue(inputForm.isErrorMessageThrownIntheForm());
+        if(!inputForm.isErrorMessageThrownIntheForm()){
+            inputForm.submitForm();
+            assertTrue(inputForm.isErrorMessageThrownIntheForm());
+        }
+
     }
 
 

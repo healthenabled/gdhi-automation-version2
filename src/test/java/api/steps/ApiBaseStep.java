@@ -15,8 +15,8 @@ public class ApiBaseStep {
     public static Response response;
     public static RequestSpecification requestSpecification;
 
-    @Step("Given the Phases exists in the <GDHI_BaseUrl>")
-    public void GetUrl(String baseurl) {
+    @Step("Given the <Phases> exists in the <GDHI_BaseUrl>")
+    public void GetUrl(String name, String baseurl) {
         Base_url = System.getenv("API_URL");
     }
 
