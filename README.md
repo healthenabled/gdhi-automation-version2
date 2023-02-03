@@ -3,8 +3,7 @@ UI and API automation tests for GDHI project using Gauge, WebDriver and RestAssu
 
 
 ## Pre-requisites
-* Install gauge (Refer to http://getgauge.github.io/documentation/user/0.5.0/installations/operating_system)
-* Install chromedriver executable (Refer to https://sites.google.com/a/chromium.org/chromedriver/getting-started)
+* Install gauge (brew install gauge)
 
 ## For running from a remote CI agent
 * Install xvfb and run it as a daemon
@@ -14,7 +13,6 @@ UI and API automation tests for GDHI project using Gauge, WebDriver and RestAssu
 
 ## Environment variables to be set
 * `BROWSER=<chrome/firefox>`
-* `CHROME_DRIVER_PATH=<path to chromedriver executable>` (if using Chrome)
 * `APP_BASE_URL=<URL for the map page of the app>`
 * `INPUT_FORM_URL=<URL for the questionairre>`
 
