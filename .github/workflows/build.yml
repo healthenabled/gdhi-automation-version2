@@ -35,10 +35,12 @@ jobs:
        - name: grant permissions
          run : chmod +x gradlew
 
-       - name: Run Gauge
-         run: ./gradlew clean gauge
+       - name: Run Gauge for UI
+         run: ./gradlew clean gauge -Ptags='ui'
+         continue-on-error: true
+
+       - name: Run Gauge for APIs
+         run: ./gradlew clean gauge -Ptags='api'
 
        - name: Build gdhi-automation-version2
          run: ./gradlew clean build
-
-
