@@ -1,3 +1,6 @@
+# GDHI-Backend
+[![GDHI-Backend](https://github.com/healthenabled/gdhi-automation-version2/actions/workflows/build.yml/badge.svg?branch=main)](https://github.com/healthenabled/gdhi-automation-version2/actions/workflows/build.yml)
+
 # gdhi-automation-version2
 UI and API automation tests for GDHI project using Gauge, WebDriver and RestAssured
 
