@@ -17,6 +17,13 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
+    
+    env:
+      PGHOST: ${{ secrets.DB_QA_HOST }}
+      PGPORT: '5432'
+      PGDATABASE: ${{ secrets.DB_QA_NAME }}
+      PGUSER: ${{ secrets.DB_QA_USER }}
+      PGPASSWORD: ${{ secrets.DB_QA_PASSWORD }}
 
     steps:
        - name: check out code
@@ -38,8 +45,11 @@ jobs:
          run : chmod +x gradlew
          
        - name: prerequisite sql script
-         run : |
-              PGPASSWORD=${{ secrets.DB_QA_PASSWORD }} psql -h ${{ secrets.DB_QA_HOST }} -U ${{ secrets.DB_QA_USER }} -d 'gdhi_qa' < data_reset.sql
+         run : psql -f data_reset.sql
+         
+ #      - name: prerequisite sql script
+ #        run : |
+ #             PGPASSWORD=${{ secrets.DB_QA_PASSWORD }} psql -h ${{ secrets.DB_QA_HOST }} -U ${{ secrets.DB_QA_USER }} -d 'gdhi_qa' < data_reset.sql
      
        - name: Run Gauge for UI
          run: CHROME_HEADLESS=false ./gradlew clean gauge -Ptags='ui'
