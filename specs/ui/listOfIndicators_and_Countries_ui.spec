@@ -18,7 +18,7 @@ This scenario verifies the lis of indicators questions
     | infrastructure                     |
     | services and applications          |
 
-## Verify the lis of Countries questions is displayed as in database
+## Verify the list of Countries questions is displayed as in database
 * User opens the application url in a browser
 * The default map view appears
 * User navigates to the list of countries page

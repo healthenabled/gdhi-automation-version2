@@ -15,6 +15,9 @@ public class LandingPage extends BasePage {
     @FindBy(css = ".indicator-panel-container-name")
     private WebElement panelName;
 
+    @FindBy(css = ".sub-header-title")
+    private WebElement SubHeader;
+
     @FindBy(css = ".indicator-panel-error")
     private WebElement panelError;
 
@@ -36,11 +39,14 @@ public class LandingPage extends BasePage {
     @FindBy(css = "//div[@class='footer']//span/a[@href='/methodology']")
     private WebElement footerMethodologyLink;
 
-    @FindBy(xpath = "//div[@class='footer']//span/a[@href='/indicators_info']")
-    private WebElement listOfIndicatorFooterLink;
+    @FindBy(css = "a[href='/indicators_info']")
+    private WebElement listOfIndicatorHeaderLink;
 
     @FindBy(css = "//div[@class='footer']//span/a[@href='/api/export_global_data']")
     private WebElement exportGlobalDataLink;
+
+    @FindBy(css=".logo-name.hd-element")
+    private WebElement HomePageHeader;
 
     public LandingPage() {
 
@@ -54,13 +60,13 @@ public class LandingPage extends BasePage {
     }
 
     public void waitForPageToLoad() {
-            waitForElementToBeVisible(panelButton);
+            waitForElementToBeVisible(HomePageHeader);
             sleep(2);
         }
 
     public String getIndicatorPanelName() {
 
-        return waitForElementToBeVisible(panelName).getText();
+        return waitForElementToBeVisible(SubHeader).getText();
     }
 
     public String getPanelButtonName() {
@@ -96,7 +102,7 @@ public class LandingPage extends BasePage {
 
 
     public void visitListOfIndicators() {
-        listOfIndicatorFooterLink.click();
+        listOfIndicatorHeaderLink.click();
     }
 
     public boolean verifyFooterMethodologyLinkIsVisible() {
@@ -105,7 +111,7 @@ public class LandingPage extends BasePage {
 
     public boolean verifyIndicatorsLink() {
 
-        return isElementVisible(listOfIndicatorFooterLink);
+        return isElementVisible(listOfIndicatorHeaderLink);
     }
 
     public boolean verifyExportCountryDataLink() {
