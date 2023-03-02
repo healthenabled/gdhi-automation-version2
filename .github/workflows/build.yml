@@ -35,8 +35,12 @@ jobs:
        - name: grant permissions
          run : chmod +x gradlew
          
+       - name: Testing dir
+         run : pwd
+         
        - name: prerequisite sql script
-         run : PGPASSWORD={{secrets.DB_QA_PASSWORD}} psql -h {{secrets.DB_QA_HOST}} -U {{secrets.DB_QA_USER}} -d 'gdhi_qa' < data_reset.sql
+         run : |
+              PGPASSWORD={{ secrets.DB_QA_PASSWORD }} psql -h {{ secrets.DB_QA_HOST }} -U {{ secrets.DB_QA_USER }} -d 'gdhi_qa' < data_reset.sql
 
        - name: Run Gauge for UI
          run: CHROME_HEADLESS=false ./gradlew clean gauge -Ptags='ui'
