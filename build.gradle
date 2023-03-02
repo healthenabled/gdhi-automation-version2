@@ -38,3 +38,14 @@ task gaugeQA(type: GaugeTask) {
         }
     }
 }
+
+task gaugeShowcase(type: GaugeTask) {
+    doFirst {
+        println 'Running tests in Showcase environment...'
+        gauge {
+            specsDir = 'specs'
+            env = 'showcase'
+            additionalFlags = '--verbose'
+        }
+    }
+}

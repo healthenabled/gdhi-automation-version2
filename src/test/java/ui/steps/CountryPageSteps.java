@@ -55,6 +55,7 @@ listOfCountriesPage.navigateToCountryPage(countryName);
     @Step("User should see the list of Countries")
     public void verifyCountryList() {
         ApiBaseStep Api = new ApiBaseStep();
+        Api.GetUrl("HEALTH_INDICATOR_COUNTRIES", "GDHI_Endpoint");
         Response response = Api.sendRequest("GET","HEALTH_INDICATOR_COUNTRIES");
         JSONObject jsonobject = new JSONObject(response.getBody().asString());
         JSONArray jsonarray = new JSONArray(jsonobject.getJSONArray("countryHealthScores"));
