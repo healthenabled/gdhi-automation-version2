@@ -80,7 +80,7 @@ jobs:
          run: sudo cat /var/log/postgresql/postgresql-14-main.log
          
        - name: nslookup
-         run: netstat -ntualp|grep "127.0.0.1:5432" 
+         run: sudo netstat -ntualp|grep "127.0.0.1:5432" 
          
        - name: prerequisite sql script
          run : psql -f data_reset.sql
