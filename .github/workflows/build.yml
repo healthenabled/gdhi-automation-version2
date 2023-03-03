@@ -58,14 +58,17 @@ jobs:
        - name: Status of the server 
          run: sudo systemctl status postgresql
          
-       - name: verify running
-         run: ps -ef | grep postgres
-         
        - name: check
          run: pg_lsclusters
          
        - name: logs
          run: sudo cat /var/log/postgresql/postgresql-14-main.log
+         
+       - name: /etc/hosts
+         run: cat /etc/hosts
+         
+       - name: list the conf
+         run: ls /etc/postgresql
          
        - name: prerequisite sql script
          run : psql -f data_reset.sql
