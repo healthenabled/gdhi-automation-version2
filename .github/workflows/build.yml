@@ -70,14 +70,17 @@ jobs:
        - name: change permissions
          run: sudo chmod 644 /etc/hosts
          
+       - name: delete postmaster
+         run: sudo rm /usr/local/var/postgres/postmaster.pid
+         
        - name: restart service
          run: sudo systemctl restart postgresql
          
        - name: logs
          run: sudo cat /var/log/postgresql/postgresql-14-main.log
          
-       - name: check the socket
-         run: sudo netstat -lnp | grep postgres
+ #      - name: check the socket
+ #        run: sudo netstat -lnp | grep postgres
          
        - name: check
          run: pg_lsclusters
