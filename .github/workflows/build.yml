@@ -64,14 +64,21 @@ jobs:
        - name: logs
          run: sudo cat /var/log/postgresql/postgresql-14-main.log
          
-       - name: /etc/hosts
-         run: cat /etc/hosts
-         
        - name: check permissions
          run: ls -al /etc/hosts
          
+       - name: change permissions
+         run: chmod 644 /etc/hosts
+         
+       - name: check permissions2
+         run: ls -al /etc/hosts
+         
+       - name: restart service
+         run: sudo service postgresql restart
+         
        - name: prerequisite sql script
          run : psql -f data_reset.sql
+         
          
  #      - name: prerequisite sql script
  #        run : |
