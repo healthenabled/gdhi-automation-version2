@@ -68,7 +68,7 @@ jobs:
          run: ls -al /etc/hosts
          
        - name: change permissions
-         run: chmod 644 /etc/hosts
+         run: sudo chmod 644 /etc/hosts
          
        - name: check permissions2
          run: ls -al /etc/hosts
