@@ -52,6 +52,9 @@ jobs:
        - name: Install psql
          run: sudo apt-get install -y postgresql-client
          
+       - name: Start the server
+         run: sudo systemctl start postgresql
+
        - name: testing 
          run: sudo systemctl status postgresql
          
