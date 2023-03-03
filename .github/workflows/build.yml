@@ -76,14 +76,14 @@ jobs:
        - name: logs
          run: sudo cat /var/log/postgresql/postgresql-14-main.log
          
+       - name: check the socket
+         run: sudo netstat -lnp | grep postgres
+         
        - name: check
          run: pg_lsclusters
          
        - name: check pgconf file
          run: sudo cat /etc/postgresql/14/main/postgresql.conf
-         
-       - name: grant permissions
-         run: sudo chown postgres -R /var/lib/postgresql/14/main
          
        - name: prerequisite sql script
          run : psql -f data_reset.sql
