@@ -65,7 +65,7 @@ jobs:
          run: pg_lsclusters
          
        - name: logs
-         run: /var/log/postgresql
+         run: sudo cat /var/log/postgresql/postgresql-14-main.log
          
        - name: prerequisite sql script
          run : psql -f data_reset.sql
