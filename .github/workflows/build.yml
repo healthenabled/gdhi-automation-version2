@@ -70,8 +70,8 @@ jobs:
        - name: change permissions
          run: sudo chmod 644 /etc/hosts
          
-       - name: delete postmaster
-         run: sudo rm /usr/local/var/postgres/postmaster.pid
+       - name: restart cluster
+         run: pg_ctlcluster 14 main start
          
        - name: restart service
          run: sudo systemctl restart postgresql
