@@ -76,9 +76,11 @@ jobs:
        - name: restart service
          run: sudo service postgresql restart
          
+       - name: logs
+         run: sudo cat /var/log/postgresql/postgresql-14-main.log
+         
        - name: prerequisite sql script
          run : psql -f data_reset.sql
-         
          
  #      - name: prerequisite sql script
  #        run : |
