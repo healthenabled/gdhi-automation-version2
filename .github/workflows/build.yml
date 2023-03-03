@@ -80,7 +80,7 @@ jobs:
          run: sudo cat /var/log/postgresql/postgresql-14-main.log
          
        - name: check pgconf file
-         run: ls /var/lib/postgresql/14/main
+         run: sudo ls /var/lib/postgresql/14/main
          
        - name: check pgconf file
          run: cat /etc/nsswitch.conf
