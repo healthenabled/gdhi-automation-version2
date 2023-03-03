@@ -19,17 +19,16 @@ jobs:
     runs-on: ubuntu-latest
     
     services:
-      # Label used to access the service container
       postgres:
-        # Docker Hub image
-        image: postgres
-    
+        image: postgres:latest
         env:
           POSTGRES_HOST: ${{ secrets.DB_QA_HOST }}
-          POSTGRES_PORT: '5432'
-          POSTGRES_DATABASE: ${{ secrets.DB_QA_NAME }}
           POSTGRES_USER: ${{ secrets.DB_QA_USER }}
           POSTGRES_PASSWORD: ${{ secrets.DB_QA_PASSWORD }}
+          POSTGRES_DB: ${{ secrets.DB_QA_NAME }}
+        ports:
+          - 5432:5432
+        options: --health-cmd pg_isready --health-interval 10s --health-timeout 5s --health-retries 5
 
     steps:
        - name: check out code
@@ -49,6 +48,9 @@ jobs:
 
        - name: grant permissions
          run : chmod +x gradlew
+         
+       - name: Install psql
+         run: sudo apt-get install -y postgresql-client
          
        - name: prerequisite sql script
          run : psql -f data_reset.sql
