@@ -52,6 +52,9 @@ jobs:
        - name: Install psql
          run: sudo apt-get install -y postgresql-client
          
+       - name: testing file
+         run: pwd ; ls
+         
        - name: prerequisite sql script
          run : psql -f data_reset.sql
          
