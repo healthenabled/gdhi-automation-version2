@@ -71,7 +71,7 @@ jobs:
          run: sudo chmod 644 /etc/hosts
          
        - name: restart cluster
-         run: pg_ctlcluster 14 main start
+         run: sudo pg_ctlcluster 14 main start
          
        - name: restart service
          run: sudo systemctl restart postgresql
