@@ -58,9 +58,6 @@ jobs:
        - name: testing 
          run: sudo systemctl status postgresql
          
-       - name: checking socket
-         run: sudo netstat -lnp | grep postgres
-         
        - name: prerequisite sql script
          run : psql -f data_reset.sql
          
