@@ -80,7 +80,7 @@ jobs:
          run: sudo cat /var/log/postgresql/postgresql-14-main.log
          
        - name: check pgconf file
-         run: sudo cat /var/lib/postgresql/14/main/postmaster.opts 
+         run: sudo cat /etc/postgresql/14/main/postgresql.conf
          
        - name: nslookup
          run: sudo netstat -ntualp|grep "127.0.0.1:5432" 
