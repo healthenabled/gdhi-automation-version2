@@ -74,10 +74,16 @@ jobs:
          run: ls -al /etc/hosts
          
        - name: restart service
-         run: sudo service postgresql restart
+         run: sudo systemctl restart postgresql
          
        - name: logs
          run: sudo cat /var/log/postgresql/postgresql-14-main.log
+         
+       - name: check pgconf file
+         run: ls /var/lib/postgresql/14/main
+         
+       - name: check pgconf file
+         run: cat /etc/nsswitch.conf
          
        - name: nslookup
          run: sudo netstat -ntualp|grep "127.0.0.1:5432" 
