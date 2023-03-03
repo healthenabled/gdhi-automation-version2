@@ -82,8 +82,8 @@ jobs:
        - name: check pgconf file
          run: sudo cat /etc/postgresql/14/main/postgresql.conf
          
-       - name: check the lib file
-         run: sudo ls /var/lib/postgresql 
+       - name: grant permissions
+         run: sudo chown postgres -R /var/lib/postgresql/
          
        - name: prerequisite sql script
          run : psql -f data_reset.sql
