@@ -67,8 +67,8 @@ jobs:
        - name: /etc/hosts
          run: cat /etc/hosts
          
-       - name: list the conf
-         run: ls /etc/postgresql
+       - name: check permissions
+         run: ls -al /etc/hosts
          
        - name: prerequisite sql script
          run : psql -f data_reset.sql
