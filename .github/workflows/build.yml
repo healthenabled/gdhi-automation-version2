@@ -55,8 +55,14 @@ jobs:
        - name: Start the server
          run: sudo systemctl start postgresql
 
-       - name: testing 
+       - name: Status of the server 
          run: sudo systemctl status postgresql
+         
+       - name: verify running
+         run: ps -ef | grep postgres
+         
+       - name: socket check
+         run: sudo find /tmp/ -name .s.PGSQL.5432
          
        - name: prerequisite sql script
          run : psql -f data_reset.sql
