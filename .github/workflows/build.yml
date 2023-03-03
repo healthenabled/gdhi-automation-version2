@@ -61,8 +61,11 @@ jobs:
        - name: verify running
          run: ps -ef | grep postgres
          
-       - name: socket check
-         run: sudo find /tmp/ -name .s.PGSQL.5432
+       - name: check
+         run: pg_lsclusters
+         
+       - name: logs
+         run: /var/log/postgresql
          
        - name: prerequisite sql script
          run : psql -f data_reset.sql
