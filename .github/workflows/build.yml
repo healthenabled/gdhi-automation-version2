@@ -70,20 +70,20 @@ jobs:
        - name: change permissions
          run: sudo chmod 644 /etc/hosts
          
-       - name: check permissions2
-         run: ls -al /etc/hosts
-         
        - name: restart service
          run: sudo systemctl restart postgresql
          
        - name: logs
          run: sudo cat /var/log/postgresql/postgresql-14-main.log
          
+       - name: check
+         run: pg_lsclusters
+         
        - name: check pgconf file
          run: sudo cat /etc/postgresql/14/main/postgresql.conf
          
        - name: grant permissions
-         run: sudo chown postgres -R /var/lib/postgresql/
+         run: sudo chown postgres -R /var/lib/postgresql/14/main
          
        - name: prerequisite sql script
          run : psql -f data_reset.sql
