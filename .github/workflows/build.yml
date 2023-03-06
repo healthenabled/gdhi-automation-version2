@@ -71,7 +71,7 @@ jobs:
          run: sudo sed -i 's/127.0.0.1\/32/0.0.0.0\/0/' /etc/postgresql/14/main/pg_hba.conf
                   
        - name: restart service
-         run: sudo systemctl restart postgresql
+         run: sudo pg_ctl reload
          
        - name: sudo service postgresql restart
          run: sudo service postgresql restart
