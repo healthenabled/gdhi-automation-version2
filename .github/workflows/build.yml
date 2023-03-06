@@ -64,6 +64,12 @@ jobs:
        - name: change cluster permissions
          run: sudo chmod 700 -R /var/lib/postgresql/14/main
          
+       - name : check the pg_hba file
+         run : cat /etc/postgresql/14/main/pg_hba.conf
+         
+ #      - name: uncomment file in pgconf
+ #        run: sed -i 's/^#listen_addresses/listen_addresses/' /etc/postgresql/14/main/postgresql.conf
+         
        - name: check2
          run: sudo -i -u postgres
          
