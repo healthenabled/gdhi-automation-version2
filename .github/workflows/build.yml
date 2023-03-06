@@ -83,8 +83,8 @@ jobs:
 #       - name: restart service
 #         run: sudo systemctl restart postgresql
          
- #      - name: logs
- #        run: sudo cat /var/log/postgresql/postgresql-14-main.log
+       - name: logs
+         run: sudo cat /var/log/postgresql/postgresql-14-main.log
          
  #      - name: check the socket
  #        run: sudo netstat -lnp | grep postgres
