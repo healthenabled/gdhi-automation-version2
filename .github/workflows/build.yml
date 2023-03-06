@@ -52,9 +52,6 @@ jobs:
        - name: Install psql
          run: sudo apt-get install -y postgresql-client 
          
-       - name: sudo ufw status
-         run: sudo ufw status
-         
 #       - name: Start the server
 #         run: sudo systemctl start postgresql
 
@@ -70,8 +67,11 @@ jobs:
        - name: check2
          run: sudo -i -u postgres
          
-       - name: check3
-         run: sudo postgres /usr/lib/postgresql/14/bin/pg_ctl restart -D /var/lib/postgresql/14/main
+       - name: restart service
+         run: sudo systemctl restart postgresql
+         
+#       - name: check3
+#         run: /usr/lib/postgresql/14/bin/pg_ctl restart -D /var/lib/postgresql/14/main
          
        - name: check
          run: pg_lsclusters
