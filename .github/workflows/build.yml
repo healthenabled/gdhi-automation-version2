@@ -68,7 +68,7 @@ jobs:
          run: sudo -i -u postgres
          
        - name: check3
-         run: sudo su /usr/lib/postgresql/14/bin/pg_ctl restart -D /var/lib/postgresql/14/main
+         run: sudo postgres /usr/lib/postgresql/14/bin/pg_ctl restart -D /var/lib/postgresql/14/main
          
        - name: check
          run: pg_lsclusters
