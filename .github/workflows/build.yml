@@ -52,35 +52,32 @@ jobs:
        - name: Install psql
          run: sudo apt-get install -y postgresql-client
          
-       - name: Start the server
-         run: sudo systemctl start postgresql
+       - name: start postgres15
+         run: sudo systemctl start postgresql@15-main.service
+         
+#       - name: Start the server
+#         run: sudo systemctl start postgresql
 
-       - name: Status of the server 
-         run: sudo systemctl status postgresql
+#       - name: Status of the server 
+#         run: sudo systemctl status postgresql
          
        - name: check
          run: pg_lsclusters
          
-       - name: logs
-         run: sudo cat /var/log/postgresql/postgresql-14-main.log
-         
-       - name: check permissions
-         run: ls -al /etc/hosts
-         
-       - name: change permissions
-         run: sudo chmod 644 /etc/hosts
+ #      - name: logs
+ #        run: sudo cat /var/log/postgresql/postgresql-14-main.log
          
        - name: change cluster permissions
          run: sudo chmod 700 -R /var/lib/postgresql/14/main
          
-       - name: check the cluster
-         run: systemctl status postgresql@14-main.service
+#       - name: check the cluster
+#         run: systemctl status postgresql@14-main.service
          
-       - name: restart service
-         run: sudo systemctl restart postgresql
+#       - name: restart service
+#         run: sudo systemctl restart postgresql
          
-       - name: logs
-         run: sudo cat /var/log/postgresql/postgresql-14-main.log
+ #      - name: logs
+ #        run: sudo cat /var/log/postgresql/postgresql-14-main.log
          
  #      - name: check the socket
  #        run: sudo netstat -lnp | grep postgres
