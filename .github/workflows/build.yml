@@ -50,10 +50,7 @@ jobs:
          run : chmod +x gradlew
          
        - name: Install psql
-         run: sudo apt-get install -y postgresql-client
-         
-       - name: start postgres15
-         run: sudo systemctl start postgresql@15-main.service
+         run: sudo apt-get install -y postgresql-client        
          
 #       - name: Start the server
 #         run: sudo systemctl start postgresql
@@ -64,11 +61,18 @@ jobs:
        - name: check
          run: pg_lsclusters
          
- #      - name: logs
- #        run: sudo cat /var/log/postgresql/postgresql-14-main.log
-         
        - name: change cluster permissions
          run: sudo chmod 700 -R /var/lib/postgresql/14/main
+         
+       - name: check2
+         run: sudo -i -u postgres
+         
+       - name: check3
+         run: /usr/lib/postgresql/14/bin/pg_ctl restart -D /var/lib/postgresql/14/main
+         
+       - name: check
+         run: pg_lsclusters
+         
          
 #       - name: check the cluster
 #         run: systemctl status postgresql@14-main.service
@@ -82,8 +86,6 @@ jobs:
  #      - name: check the socket
  #        run: sudo netstat -lnp | grep postgres
          
-       - name: check
-         run: pg_lsclusters
          
        - name: check pgconf file
          run: sudo cat /etc/postgresql/14/main/postgresql.conf
