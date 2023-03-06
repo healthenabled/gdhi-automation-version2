@@ -1,106 +1,83 @@
-# This workflow uses actions that are not certified by GitHub.
-# They are provided by a third-party and are governed by
-# separate terms of service, privacy policy, and support
-# documentation.
-# This workflow will build a Java project with Gradle and cache/restore any dependencies to improve the workflow execution time
-# For more information see: https://docs.github.com/en/actions/automating-builds-and-tests/building-and-testing-java-with-gradle
-
-name: Java CI with Gradle
+name: CI Pipeline for Automation
 
 on:
   push:
-    branches: [ "master" ]
+    branches: ["master"]
   pull_request:
-    branches: [ "master" ]
+    branches: ["master"]
   workflow_dispatch:
-  
+
 jobs:
   build:
     runs-on: ubuntu-latest
-    
-    services:
-      postgres:
-        image: postgres:latest
-        env:
-          POSTGRES_HOST: ${{ secrets.DB_QA_HOST }}
-          POSTGRES_USER: ${{ secrets.DB_QA_USER }}
-          POSTGRES_PASSWORD: ${{ secrets.DB_QA_PASSWORD }}
-          POSTGRES_DB: ${{ secrets.DB_QA_NAME }}
-        ports:
-          - 5432:5432
-        options: --health-cmd pg_isready --health-interval 10s --health-timeout 5s --health-retries 5
-
     steps:
-       - name: check out code
-         uses: actions/checkout@v3
+      - name: check out code
+        uses: actions/checkout@v3
 
-       - name: Set up JDK 17
-         uses: actions/setup-java@v3
-         with:
-           java-version: '17'
-           distribution: 'temurin'
+      - name: Set up JDK 17
+        uses: actions/setup-java@v3
+        with:
+          java-version: "17"
+          distribution: "temurin"
 
-       - name: Install curl
-         run: sudo apt install curl
+      - name: Install curl
+        run: sudo apt install curl
 
-       - name: Install Gauge
-         run: curl -SsL https://downloads.gauge.org/stable | sh
+      - name: Install Gauge
+        run: curl -SsL https://downloads.gauge.org/stable | sh
 
-       - name: grant permissions
-         run : chmod +x gradlew
-         
-       - name: Install psql
-         run: sudo apt-get install -y postgresql-client 
-         
-#       - name: Start the server
-#         run: sudo systemctl start postgresql
+      - name: grant permissions
+        run: chmod +x gradlew
 
-#       - name: Status of the server 
-#         run: sudo systemctl status postgresql
-         
-       - name: check
-         run: pg_lsclusters
-         
-       - name: change cluster permissions
-         run: sudo chmod 700 -R /var/lib/postgresql/14/main
-         
-         
-#       - name: check3
-#         run: sudo /usr/lib/postgresql/14/bin/pg_ctl restart -D /var/lib/postgresql/14/main
-         
-       - name: check
-         run: pg_lsclusters
-         
-         
-#       - name: check the cluster
-#         run: systemctl status postgresql@14-main.service
-         
-#       - name: restart service
-#         run: sudo systemctl restart postgresql
-         
-       - name: logs
-         run: sudo cat /var/log/postgresql/postgresql-14-main.log
-         
- #      - name: check the socket
- #        run: sudo netstat -lnp | grep postgres
-         
-         
-       - name: check pgconf file
-         run: sudo cat /etc/postgresql/14/main/postgresql.conf
-         
-       - name: prerequisite sql script
-         run : psql -f data_reset.sql
-         
- #      - name: prerequisite sql script
- #        run : |
- #             PGPASSWORD=${{ secrets.DB_QA_PASSWORD }} psql -h ${{ secrets.DB_QA_HOST }} -U ${{ secrets.DB_QA_USER }} -d 'gdhi_qa' < data_reset.sql
-     
-       - name: Run Gauge for UI
-         run: CHROME_HEADLESS=false ./gradlew clean gauge -Ptags='ui'
-         continue-on-error: true
+      - name: Install psql
+        run: sudo apt-get install -y postgresql-client
 
-       - name: Run Gauge for APIs
-         run: ./gradlew clean gauge -Ptags='api'
+      #       - name: Start the server
+      #         run: sudo systemctl start postgresql
 
-       - name: Build gdhi-automation-version2
-         run: ./gradlew clean build
+      #       - name: Status of the server
+      #         run: sudo systemctl status postgresql
+
+      #  - name: check
+      #    run: pg_lsclusters
+
+      #  - name: change cluster permissions
+      #    run: sudo chmod 700 -R /var/lib/postgresql/14/main
+
+      #       - name: check3
+      #         run: sudo /usr/lib/postgresql/14/bin/pg_ctl restart -D /var/lib/postgresql/14/main
+
+      # - name: check
+      #   run: pg_lsclusters
+
+      #       - name: check the cluster
+      #         run: systemctl status postgresql@14-main.service
+
+      #       - name: restart service
+      #         run: sudo systemctl restart postgresql
+
+      # - name: logs
+      #   run: sudo cat /var/log/postgresql/postgresql-14-main.log
+
+      #      - name: check the socket
+      #        run: sudo netstat -lnp | grep postgres
+
+      - name: check pgconf file
+        run: sudo cat /etc/postgresql/14/main/postgresql.conf
+
+      - name: prerequisite sql script
+        run: psql postgresql://${{ secrets.DB_QA_USER }}:${{ secrets.DB_QA_PASSWORD }}@${{ secrets.DB_QA_HOST }}/${{ secrets.DB_QA_NAME }} -f data_reset.sql
+
+      #      - name: prerequisite sql script
+      #        run : |
+      #             PGPASSWORD=${{ secrets.DB_QA_PASSWORD }} psql -h ${{ secrets.DB_QA_HOST }} -U ${{ secrets.DB_QA_USER }} -d 'gdhi_qa' < data_reset.sql
+
+      - name: Run Gauge for UI
+        run: CHROME_HEADLESS=false ./gradlew clean gauge -Ptags='ui'
+        continue-on-error: true
+
+      - name: Run Gauge for APIs
+        run: ./gradlew clean gauge -Ptags='api'
+
+      - name: Build gdhi-automation-version2
+        run: ./gradlew clean build
