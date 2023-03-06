@@ -50,7 +50,10 @@ jobs:
          run : chmod +x gradlew
          
        - name: Install psql
-         run: sudo apt-get install -y postgresql-client        
+         run: sudo apt-get install -y postgresql-client 
+         
+       - name: sudo ufw status
+         run: sudo ufw status
          
 #       - name: Start the server
 #         run: sudo systemctl start postgresql
