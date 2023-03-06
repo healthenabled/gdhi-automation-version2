@@ -65,7 +65,7 @@ jobs:
          run: sudo chmod 700 -R /var/lib/postgresql/14/main
          
        - name: uncomment file in pgconf
-         run: sudo sed -i 's/^#listen_addresses/listen_addresses/' /etc/postgresql/14/main/postgresql.conf
+         run: sudo sed -i 's/#listen_addresses = '\''localhost'\''/listen_addresses = '\''*'\''/' /etc/postgresql/14/main/postgresql.conf
          
        - name: uncomment file in pbhba
          run: sudo sed -i 's/127.0.0.1\/32/0.0.0.0\/0/' /etc/postgresql/14/main/pg_hba.conf
