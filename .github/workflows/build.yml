@@ -73,6 +73,9 @@ jobs:
        - name: restart cluster
          run: sudo pg_ctlcluster 14 main start
          
+       - name: check the cluster
+         run: systemctl status postgresql@14-main.service
+         
        - name: restart service
          run: sudo systemctl restart postgresql
          
