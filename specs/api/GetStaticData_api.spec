@@ -16,7 +16,7 @@ Validate Indicators Response
 * Given the "INDICATORS" exists in the "GDHI_Endpoint"
 * Send the "GET" request to "INDICATORS"
 * Then the Status code should be "200"
-* and response should include "7" categories and "22" indicators
+* and response should include "7" categories and "31" indicators
 
 
 Validate Countries Response

@@ -1,3 +1,215 @@
 {
-  "year":"Version1"
+  "year": "Version1",
+  "country_data": {
+    "countryId": "NPL",
+    "countrySummary": {
+      "countryId": "NPL",
+      "countryName": "Nepal",
+      "countryAlpha2Code": "NP",
+      "summary": "Automation Test Summary",
+      "contactName": "Test Country Name",
+      "contactDesignation": "moh",
+      "contactOrganization": "organise",
+      "contactEmail": "Auto-test@gmail.com",
+      "dataFeederName": "Test entering data name",
+      "dataFeederRole": "Typist",
+      "dataFeederEmail": "Auto-Feedeer@gmail.com",
+      "govtApproved": true,
+      "dataApproverName": "Automation approver Name",
+      "dataApproverRole": "Soh",
+      "dataApproverEmail": "Automationappro@gmail.com",
+      "resources": [
+        "www.example.com",
+        "www.example2.com"
+      ]
+    },
+    "healthIndicators": [
+      {
+        "categoryId": 1,
+        "indicatorId": 1,
+        "score": 3,
+        "supportingText": "Testing"
+      },
+      {
+        "categoryId": 1,
+        "indicatorId": 2,
+        "score": 3,
+        "supportingText": "Testing"
+      },
+      {
+        "categoryId": 1,
+        "indicatorId": 30,
+        "score": 3,
+        "supportingText": "Testing"
+      },
+      {
+        "categoryId": 1,
+        "indicatorId": 31,
+        "score": 3,
+        "supportingText": "Testing"
+      },
+      {
+        "categoryId": 1,
+        "indicatorId": 32,
+        "score": 3,
+        "supportingText": "Testing"
+      },
+      {
+        "categoryId": 1,
+        "indicatorId": 33,
+        "score": 3,
+        "supportingText": "Testing"
+      },
+      {
+        "categoryId": 2,
+        "indicatorId": 3,
+        "score": 3,
+        "supportingText": "Testing"
+      },
+      {
+        "categoryId": 2,
+        "indicatorId": 37,
+        "score": 3,
+        "supportingText": "Testing"
+      },
+      {
+        "categoryId": 2,
+        "indicatorId": 4,
+        "score": 3,
+        "supportingText": "Testing"
+      },
+      {
+        "categoryId": 2,
+        "indicatorId": 38,
+        "score": 3,
+        "supportingText": "Testing"
+      },
+      {
+        "categoryId": 3,
+        "indicatorId": 5,
+        "score": 3,
+        "supportingText": "Testing"
+      },
+      {
+        "categoryId": 3,
+        "indicatorId": 6,
+        "score": 3,
+        "supportingText": "Testing"
+      },
+      {
+        "categoryId": 3,
+        "indicatorId": 7,
+        "score": 3,
+        "supportingText": "Testing"
+      },
+      {
+        "categoryId": 3,
+        "indicatorId": 36,
+        "score": 3,
+        "supportingText": "Testing"
+      },
+      {
+        "categoryId": 3,
+        "indicatorId": 8,
+        "score": 3,
+        "supportingText": "Testing"
+      },
+      {
+        "categoryId": 4,
+        "indicatorId": 9,
+        "score": 3,
+        "supportingText": "Testing"
+      },
+      {
+        "categoryId": 4,
+        "indicatorId": 10,
+        "score": 3,
+        "supportingText": "Testing"
+      },
+      {
+        "categoryId": 4,
+        "indicatorId": 11,
+        "score": 3,
+        "supportingText": "Testing"
+      },
+      {
+        "categoryId": 4,
+        "indicatorId": 12,
+        "score": 3,
+        "supportingText": "Testing"
+      },
+      {
+        "categoryId": 5,
+        "indicatorId": 13,
+        "score": 3,
+        "supportingText": "Testing"
+      },
+      {
+        "categoryId": 5,
+        "indicatorId": 14,
+        "score": 3,
+        "supportingText": "Testing"
+      },
+      {
+        "categoryId": 6,
+        "indicatorId": 15,
+        "score": 3,
+        "supportingText": "Testing"
+      },
+      {
+        "categoryId": 6,
+        "indicatorId": 16,
+        "score": 3,
+        "supportingText": "Testing"
+      },
+      {
+        "categoryId": 7,
+        "indicatorId": 17,
+        "score": 3,
+        "supportingText": "Testing"
+      },
+      {
+        "categoryId": 7,
+        "indicatorId": 18,
+        "score": 3,
+        "supportingText": "Testing"
+      },
+      {
+        "categoryId": 7,
+        "indicatorId": 19,
+        "score": 3,
+        "supportingText": "Testing"
+      },
+      {
+        "categoryId": 7,
+        "indicatorId": 27,
+        "score": 3,
+        "supportingText": "Testing"
+      },
+      {
+        "categoryId": 7,
+        "indicatorId": 28,
+        "score": 3,
+        "supportingText": "Testing"
+      },
+      {
+        "categoryId": 7,
+        "indicatorId": 29,
+        "score": 3,
+        "supportingText": "Testing"
+      },
+      {
+        "categoryId": 7,
+        "indicatorId": 34,
+        "score": 3,
+        "supportingText": "Testing"
+      },
+      {
+        "categoryId": 7,
+        "indicatorId": 35,
+        "score": 3,
+        "supportingText": "Testing"
+      }
+    ]
+  }
 }

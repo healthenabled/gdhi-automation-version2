@@ -5,6 +5,9 @@ import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 
 import java.io.FileReader;
+import java.text.SimpleDateFormat;
+import java.time.LocalDate;
+import java.util.Calendar;
 
 public class commonMethods {
 
@@ -19,5 +22,15 @@ public class commonMethods {
             e.printStackTrace();
         }
         return json;
+    }
+
+    public String getCurrentMonth(){
+        Calendar cal = Calendar.getInstance();
+        return new SimpleDateFormat("MMMM").format(cal.getTime());
+    }
+
+    public int getCurrentyear(){
+        LocalDate currentDate = LocalDate.now();
+        return currentDate.getYear();
     }
 }
