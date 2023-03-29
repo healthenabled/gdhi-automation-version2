@@ -62,6 +62,7 @@ public class InputFormSteps extends BaseStep {
     @Step("User should be able to submit the data for <Sri Lanka> without any validation errors thrown")
     public void fills_form_without_errors(String countryNAme) {
         inputForm.submitForm();
+        inputForm.comfirmSubmit();
         inputForm.isSubmittedSuccessfully();
     }
 

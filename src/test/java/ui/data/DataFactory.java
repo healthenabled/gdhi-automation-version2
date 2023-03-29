@@ -57,6 +57,7 @@ public class DataFactory {
         data.put("indicator28Score", "2");
         data.put("indicator29Score", "3");
         data.put("indicator30Score", "3");
+        data.put("indicator31Score", "3");
         data.put("resourcesText","Resources");
         return data;
     }

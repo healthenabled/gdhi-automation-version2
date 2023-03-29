@@ -33,7 +33,6 @@ public class GetStaticData_Steps extends ApiBaseStep {
 
     @Step("and response should include <193> countries")
     public void ValidateCountries(int count) {
-        Gauge.writeMessage(response.prettyPrint());
         JSONArray jsonarray = new JSONArray(response.getBody().asString());
         Gauge.writeMessage("No of Countries =>" + jsonarray.length());
         System.out.println(jsonarray.length());

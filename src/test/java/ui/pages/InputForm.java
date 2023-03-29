@@ -116,6 +116,15 @@ public class InputForm extends BasePage {
     @FindBy(xpath = "//button[@class='dg-btn dg-btn--ok dg-pull-right']")
     private WebElement alertConfirmPublishBtn;
 
+    @FindBy(xpath = "//input[@id='govtApproved']")
+    private WebElement isGovtApproved;
+
+    @FindBy(xpath = "//span[contains(text(),'Confirm')]")
+    private WebElement ConfirmSubmit;
+
+    @FindBy(xpath = "//div[normalize-space()='Leadership & Governance']")
+    private WebElement leadershipTab;
+
     public InputForm() {
 
         PageFactory.initElements(driver, this);
@@ -131,6 +140,12 @@ public class InputForm extends BasePage {
 
     }
 
+    public void comfirmSubmit(){
+        sleep(1);
+        waitForElementToBeVisible(ConfirmSubmit);
+        ConfirmSubmit.click();
+    }
+
     public boolean isErrorMessageThrownIntheForm() {
         sleep(1);
         return invalidFormErrorMessageText.isDisplayed();
@@ -139,7 +154,8 @@ public class InputForm extends BasePage {
     public void enterValidResponse(HashMap<String, String> data) {
 //        autoCompleteSearch(countryName, "eac-container-countryName", ui.data.get("countryName"));
         organisation.sendKeys(data.get("organisation"));
-        date.sendKeys(data.get("date"));
+        //date.sendKeys(data.get("date"));
+        isGovtApproved.click();
         dataEntryName.sendKeys(data.get("dataEntryName"));
         dataEntryRole.sendKeys(data.get("dataEntryRole"));
         dataEntryEmail.sendKeys(data.get("dataEntryEmail"));
@@ -216,11 +232,12 @@ sleep(1);
 
     public boolean isFormReadOnly() {
 
-        return date.isEnabled();
+        return dataEntryName.isEnabled();
     }
 
     public boolean isQuestionnaireInfoDisabled() {
-
+        sleep(1);
+        leadershipTab.click();
         return questionRationaleText.isEnabled();
     }
 

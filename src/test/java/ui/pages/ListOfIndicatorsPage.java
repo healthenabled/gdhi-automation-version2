@@ -28,7 +28,7 @@ public class ListOfIndicatorsPage extends BasePage {
         List<WebElement> actualIndicatorText = getListofElements(By.xpath("//div[@class='accordion expanded']/div[@class='align-No sub-header']"));
         for (WebElement element:actualIndicatorText) {
             System.out.println("Actual indicators " +element.getText());
-            actualIndicators.add(element.getText().toLowerCase());
+            actualIndicators.add(element.getText());
         }
         return actualIndicators;
     }

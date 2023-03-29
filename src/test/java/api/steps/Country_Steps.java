@@ -98,7 +98,6 @@ public class Country_Steps extends ApiBaseStep{
 
     @Step("Verify the Country  data is Displayed overall indicators data")
     public void VerifyCountryDataOverall(){
-        Gauge.writeMessage(response.prettyPrint());
         JSONObject jsonobj = new JSONObject(response.getBody().asString());
         JSONArray actual = jsonobj.getJSONArray("countryHealthScores");
         for (Object obj : actual) {
@@ -115,7 +114,6 @@ public class Country_Steps extends ApiBaseStep{
 
     @Step("Verify the Benchmark data is Displayed as expected")
     public void VerifyBenkmarkData(){
-        Gauge.writeMessage(response.prettyPrint());
         JSONObject jsonobj = new JSONObject(response.getBody().asString());
         String actual = jsonobj.getJSONObject("1").getString("benchmarkValue");
         List<String> list = List.of("At", "Below", "Above");
@@ -124,7 +122,6 @@ public class Country_Steps extends ApiBaseStep{
 
     @Step("Validate the Published Attributes in the response")
     public void VerifyViewPublisheddata(){
-        Gauge.writeMessage(response.prettyPrint());
         JSONObject jsonobj = new JSONObject(response.getBody().asString());
         assertEquals(jsonobj.getString("countryId"), SpecDataStore.get("Country3Code"));
         assertEquals(jsonobj.getString("currentYear"), String.valueOf(cm.getCurrentyear()));

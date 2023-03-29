@@ -69,6 +69,7 @@ public class LandingPageSteps extends BaseStep {
 
     @Step("User navigates to the list of countries page")
     public void user_navigates_to_list_of_countries() {
-        landingPage.visitListOfCountries();
+        //landingPage.visitListOfCountries();
+        landingPage.visitListOfCountriesAlternative();
     }
 }

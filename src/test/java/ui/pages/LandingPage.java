@@ -118,7 +118,9 @@ public class LandingPage extends BasePage {
         return isElementVisible(exportGlobalDataLink);
     }
 
-//    public void visitListOfCountries() {
-//        listOfIndicatorFooterLink.click();
-//    }
+    public void visitListOfCountriesAlternative() {
+        String currentUrl = driver.getCurrentUrl();
+        String newUrl = currentUrl.substring(0, currentUrl.indexOf("/map"));
+        driver.get(newUrl + "/country_list");
+    }
 }

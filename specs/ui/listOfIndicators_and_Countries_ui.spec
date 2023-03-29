@@ -10,13 +10,13 @@ This scenario verifies the lis of indicators questions
 * User navigates to the list of indicators page
 * User should see below list of indicators
     | Indicators                         |
-    | leadership and governance          |
-    | strategy and investment            |
-    | legislation, policy, and compliance|
-    | workforce                          |
-    | standards and interoperability     |
-    | infrastructure                     |
-    | services and applications          |
+    | LEADERSHIP & GOVERNANCE            |
+    | STRATEGY & INVESTMENT              |
+    | LEGISLATION, POLICY, & COMPLIANCE  |
+    | WORKFORCE                          |
+    | STANDARDS & INTEROPERABILITY       |
+    | INFRASTRUCTURE                     |
+    | SERVICES & APPLICATIONS            |
 
 ## Verify the list of Countries questions is displayed as in database
 * User opens the application url in a browser
