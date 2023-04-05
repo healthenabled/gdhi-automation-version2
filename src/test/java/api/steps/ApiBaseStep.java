@@ -66,6 +66,9 @@ public class ApiBaseStep {
             case "POST":
                 this.response = requestSpecification.post(Base_url + url_path);
                 break;
+            case "DELETE":
+                this.response = requestSpecification.delete(Base_url + url_path);
+                break;
             default:
                 Assertions.fail("Given method is not acceptable");
         }

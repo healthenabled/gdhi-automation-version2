@@ -27,73 +27,73 @@
       {
         "categoryId": 1,
         "indicatorId": 1,
-        "score": 3,
+        "score": 1,
         "supportingText": "Testing"
       },
       {
         "categoryId": 1,
         "indicatorId": 2,
-        "score": 3,
+        "score": 2,
         "supportingText": "Testing"
       },
       {
         "categoryId": 1,
         "indicatorId": 30,
-        "score": 3,
+        "score": 5,
         "supportingText": "Testing"
       },
       {
         "categoryId": 1,
         "indicatorId": 31,
-        "score": 3,
+        "score": 1,
         "supportingText": "Testing"
       },
       {
         "categoryId": 1,
         "indicatorId": 32,
-        "score": 3,
+        "score": 1,
         "supportingText": "Testing"
       },
       {
         "categoryId": 1,
         "indicatorId": 33,
-        "score": 3,
+        "score": 5,
         "supportingText": "Testing"
       },
       {
         "categoryId": 2,
         "indicatorId": 3,
-        "score": 3,
+        "score": -1,
         "supportingText": "Testing"
       },
       {
         "categoryId": 2,
         "indicatorId": 37,
-        "score": 3,
+        "score": 5,
         "supportingText": "Testing"
       },
       {
         "categoryId": 2,
         "indicatorId": 4,
-        "score": 3,
+        "score": -1,
         "supportingText": "Testing"
       },
       {
         "categoryId": 2,
         "indicatorId": 38,
-        "score": 3,
+        "score": 5,
         "supportingText": "Testing"
       },
       {
         "categoryId": 3,
         "indicatorId": 5,
-        "score": 3,
+        "score": 1,
         "supportingText": "Testing"
       },
       {
         "categoryId": 3,
         "indicatorId": 6,
-        "score": 3,
+        "score": 2,
         "supportingText": "Testing"
       },
       {
@@ -105,25 +105,25 @@
       {
         "categoryId": 3,
         "indicatorId": 36,
-        "score": 3,
+        "score": 4,
         "supportingText": "Testing"
       },
       {
         "categoryId": 3,
         "indicatorId": 8,
-        "score": 3,
+        "score": 5,
         "supportingText": "Testing"
       },
       {
         "categoryId": 4,
         "indicatorId": 9,
-        "score": 3,
+        "score": 2,
         "supportingText": "Testing"
       },
       {
         "categoryId": 4,
         "indicatorId": 10,
-        "score": 3,
+        "score": 2,
         "supportingText": "Testing"
       },
       {
@@ -135,37 +135,37 @@
       {
         "categoryId": 4,
         "indicatorId": 12,
-        "score": 3,
+        "score": 5,
         "supportingText": "Testing"
       },
       {
         "categoryId": 5,
         "indicatorId": 13,
-        "score": 3,
+        "score": -1,
         "supportingText": "Testing"
       },
       {
         "categoryId": 5,
         "indicatorId": 14,
-        "score": 3,
+        "score": -1,
         "supportingText": "Testing"
       },
       {
         "categoryId": 6,
         "indicatorId": 15,
-        "score": 3,
+        "score": 4,
         "supportingText": "Testing"
       },
       {
         "categoryId": 6,
         "indicatorId": 16,
-        "score": 3,
+        "score": 4,
         "supportingText": "Testing"
       },
       {
         "categoryId": 7,
         "indicatorId": 17,
-        "score": 3,
+        "score": 1,
         "supportingText": "Testing"
       },
       {
@@ -201,13 +201,13 @@
       {
         "categoryId": 7,
         "indicatorId": 34,
-        "score": 3,
+        "score": 2,
         "supportingText": "Testing"
       },
       {
         "categoryId": 7,
         "indicatorId": 35,
-        "score": 3,
+        "score": 2,
         "supportingText": "Testing"
       }
     ]

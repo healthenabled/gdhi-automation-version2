@@ -73,7 +73,7 @@ User Verifies Country Summary and Country health indicator details
 * Given the "HEALTH_INDICATORS" exists in the "GDHI_Endpoint"
 * Send the "GET" request to "HEALTH_INDICATORS" with "CountryCode" as "QUERY" parameter
 * Then the Status code should be "200"
-//* Verify the HealthIndicators are Displayed as expected
+* Verify the HealthIndicators scores are Displayed as expected
 
 * Given the "DEVELOPMENT_INDICATORS" exists in the "GDHI_Endpoint"
 * Send the "GET" request to "DEVELOPMENT_INDICATORS" with "CountryCode" as "QUERY" parameter

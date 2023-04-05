@@ -14,6 +14,8 @@ import java.time.LocalDate;
 import java.util.Calendar;
 import java.util.List;
 import java.util.Locale;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 import static org.junit.jupiter.api.Assertions.*;
 import static org.junit.jupiter.api.Assertions.assertEquals;
@@ -128,6 +130,59 @@ public class Country_Steps extends ApiBaseStep{
         assertEquals(jsonobj.getString("dataAvailableForYear"),String.valueOf(cm.getCurrentyear()));
         assertEquals(jsonobj.getString("status"), "PUBLISHED");
         assertEquals(jsonobj.getString("status"), "PUBLISHED");
+    }
+
+    @Step("Verify the HealthIndicators scores are Displayed as expected")
+    public void VerifyScore(){
+        double totalScore = 0;
+        int numScores = 0;
+        double category_score = 0;
+        double overall_Score = 0;
+        int overallNumScore =0;
+
+        String body = cm.getbody("country_data");
+        JSONArray actualArray = new JSONObject(body).getJSONArray("healthIndicators");
+        JSONArray jsonarray = new JSONObject(response.getBody().asString()).getJSONArray("categories");
+        for (Object arr : jsonarray) {
+            totalScore=0.0;
+            numScores=0;;
+            JSONObject jsonObj = (JSONObject) arr;
+            JSONArray indicatorsArray = jsonObj.getJSONArray("indicators");
+            for (Object obj : indicatorsArray) {
+                JSONObject scoreobj = (JSONObject) obj;
+                int score = scoreobj.getInt("score");
+                for (Object bodyobj : actualArray) {
+                    JSONObject jsonbody = (JSONObject) bodyobj;
+                    if(scoreobj.getInt("id") == jsonbody.getInt("indicatorId")) {
+                        assertEquals(jsonbody.getInt("score"), score);
+                        break;
+                    }
+                }
+                String code = scoreobj.getString("code");
+                Pattern pattern = Pattern.compile("\\d+");
+                Matcher matcher = pattern.matcher(code);
+                if (score != -1 && matcher.matches()) {
+                    totalScore += score;
+                    numScores++;
+                }
+            }
+            if(numScores>=1) {
+                category_score = totalScore / numScores;
+                assertEquals(category_score,jsonObj.getDouble("overallScore"));
+                assertEquals((int)Math.ceil(jsonObj.getDouble("overallScore")), jsonObj.getInt("phase"));
+                overall_Score+=jsonObj.getDouble("overallScore");
+                overallNumScore++;
+            }
+            else{
+                assertEquals(-1.0,jsonObj.getDouble("overallScore"));
+                assertEquals(-1,jsonObj.getInt("phase"));
+            }
+        }
+
+        Double Countryphase = overall_Score/overallNumScore;
+        JSONObject jobj =  new JSONObject(response.getBody().asString());
+        assertEquals((int)Math.ceil(Countryphase),jobj.getInt("countryPhase"));
+
     }
 
 }

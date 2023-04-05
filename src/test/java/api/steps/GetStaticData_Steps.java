@@ -2,9 +2,12 @@ package api.steps;
 
 import com.thoughtworks.gauge.Gauge;
 import com.thoughtworks.gauge.Step;
+import com.thoughtworks.gauge.Table;
 import org.json.JSONArray;
+import org.json.JSONObject;
 
 import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 public class GetStaticData_Steps extends ApiBaseStep {
 
@@ -37,5 +40,14 @@ public class GetStaticData_Steps extends ApiBaseStep {
         Gauge.writeMessage("No of Countries =>" + jsonarray.length());
         System.out.println(jsonarray.length());
         assertEquals(count,jsonarray.length());
+    }
+
+    @Step("and response should include below <count> categories and Overall Score")
+    public void ValidateGlobalIndicators(int count){
+        JSONObject jsonobj = new JSONObject(response.getBody().asString());
+        System.out.println(jsonobj.getInt("overAllScore"));
+        assertTrue(((jsonobj.getInt("overAllScore") >0) && jsonobj.getInt("overAllScore")<8));
+        JSONArray jsonarray = new JSONArray(jsonobj.getJSONArray("categories"));
+        assertEquals(jsonarray.length(),count);
     }
 }
