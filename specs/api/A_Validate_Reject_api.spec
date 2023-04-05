@@ -1,7 +1,7 @@
 Validation of Reject
 =====================
 Created by ramakrishna.cthoughts.com on 30/03/23
-
+Tags: api
 This is an executable specification file which follows markdown syntax.
 Every heading in this file denotes a scenario. Every bulleted point denotes a step.
 

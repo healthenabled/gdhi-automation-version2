@@ -1,7 +1,7 @@
 Validate Global indicators
 =====================
 Created by ramakrishna.cthoughts.com on 31/03/23
-
+Tags: api
 This is an executable specification file which follows markdown syntax.
 Every heading in this file denotes a scenario. Every bulleted point denotes a step.
      
