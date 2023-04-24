@@ -25,7 +25,7 @@ public class ListOfCountriesPage extends BasePage {
     @FindBy(xpath = "//span[@class='country-name'][text()='Sri Lanka']/parent::li/span[1][text()='2']")
     private WebElement countryScoreText;
 
-    @FindBy(xpath = "//div[@class='country-name page-title'][contains(text(),'Sri Lanka')]")
+    @FindBy(xpath = "//div[@class='country-name page-title']/div[contains(text(),'Sri Lanka')]")
     private WebElement countryPageTitle;
 
     public ListOfCountriesPage() {

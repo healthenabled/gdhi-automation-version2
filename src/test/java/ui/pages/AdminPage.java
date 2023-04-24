@@ -1,8 +1,11 @@
 package ui.pages;
 
+import api.common.commonMethods;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
+import org.openqa.selenium.support.ui.Select;
+
 
 import java.awt.datatransfer.UnsupportedFlavorException;
 import java.io.IOException;
@@ -34,6 +37,12 @@ public class AdminPage extends BasePage {
 
     @FindBy(xpath = "//div[@class='tab-content'][2]/div/table[@id='fifthTable']/tbody/tr/td[normalize-space(text()='Sri Lanka')]")
     private WebElement countryNameInTable;
+
+    @FindBy(xpath ="//select[@class='year-indicator-select ltr']")
+    private WebElement defaultyeardwn;
+
+    @FindBy(xpath = "//button[normalize-space()='SUBMIT']")
+    private WebElement Submitbutton;
 
     public AdminPage() {
         PageFactory.initElements(driver, this);
@@ -99,5 +108,13 @@ public class AdminPage extends BasePage {
     public boolean isCountryDisplayedInReviewPendingSection(String countryName) {
 
     return countryNameInTable.isDisplayed();
+    }
+
+    public void changeYear(){
+    Select yeardwn = new Select(defaultyeardwn);
+    commonMethods cm = new commonMethods();
+    yeardwn.selectByVisibleText(String.valueOf(cm.getCurrentyear()));
+    sleep(1);
+        Submitbutton.click();
     }
 }

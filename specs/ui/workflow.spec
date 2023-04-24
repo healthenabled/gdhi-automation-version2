@@ -17,10 +17,14 @@ This scenario verifies the various functionalities related to the overall digita
 * User fills the form for "Sri Lanka" with health indicator answers
 * User should be able to submit the data for "Sri Lanka" without any validation errors thrown
 * User views the submitted responses for "Sri Lanka" in read only format after submission
+* User Verifies the Validation of the Message displayed for status "Review in Pending"
 * User navigates to admin page
 * User navigates to review URL for "Sri Lanka" from admin page
 * User edits the form for "Sri Lanka" and removes data
 * User publishes the data for "Sri Lanka"
+* User Verifies the Validation of the Message displayed for status "Published"
+* User navigates to admin page
+* User Selects the current year from the default year dropdown
 
 * User opens the application url in a browser
 * The default map view appears

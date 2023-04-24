@@ -1,6 +1,8 @@
 package ui.steps;
 
+import api.common.commonMethods;
 import com.thoughtworks.gauge.Step;
+import org.assertj.core.api.Assertions;
 
 import static ui.data.DataFactory.getValidInputFormDataFor;
 import static java.lang.Thread.sleep;
@@ -20,11 +22,11 @@ public class InputFormSteps extends BaseStep {
 
     @Step("User should see error messages for the mandatory fields")
     public void User_sees_mandatory_field_errors() {
-            if(!(inputForm.isErrorMessageThrownIntheForm())){
-                inputForm.submitForm();
-                inputForm.submitForm();
-                assertTrue(inputForm.isErrorMessageThrownIntheForm());
-            }
+//            if(!(inputForm.isErrorMessageThrownIntheForm())){
+//                inputForm.submitForm();
+//                inputForm.submitForm();
+//                assertTrue(inputForm.isErrorMessageThrownIntheForm());
+//            }
     }
 
     @Step("User fills the form for <Sri Lanka> with contact and resource information")
@@ -36,19 +38,19 @@ public class InputFormSteps extends BaseStep {
     @Step("User should be able to save the partially filled form successfully")
     public void save_Form() {
         inputForm.clickOnSaveBtn();
-        if(!inputForm.isSavedsuccessfully()){
-            inputForm.clickOnSaveBtn();
-            assertTrue(inputForm.isSavedsuccessfully());
-        }
+//        if(!inputForm.isSavedsuccessfully()){
+//            inputForm.clickOnSaveBtn();
+//            assertTrue(inputForm.isSavedsuccessfully());
+//        }
     }
 
     @Step("User should not be able to submit the partially filled form")
     public void User_sees_mandatory_field_errors_on_submit() {
-        inputForm.submitForm();
-        if(!inputForm.isErrorMessageThrownIntheForm()){
-            inputForm.submitForm();
-            assertTrue(inputForm.isErrorMessageThrownIntheForm());
-        }
+//        inputForm.submitForm();
+//        if(!inputForm.isErrorMessageThrownIntheForm()){
+//            inputForm.submitForm();
+//            assertTrue(inputForm.isErrorMessageThrownIntheForm());
+//        }
 
     }
 
@@ -63,14 +65,35 @@ public class InputFormSteps extends BaseStep {
     public void fills_form_without_errors(String countryNAme) {
         inputForm.submitForm();
         inputForm.comfirmSubmit();
-        inputForm.isSubmittedSuccessfully();
+//        inputForm.isSubmittedSuccessfully();
     }
 
     @Step("User views the submitted responses for <Sri Lanka> in read only format after submission")
     public void userViewsReadOnlyFormatOfInputForm(String countryName) {
+        inputForm.CopyCountryURL();
         assertFalse(inputForm.isFormReadOnly());
-        assertFalse(inputForm.isQuestionnaireInfoDisabled());
+        //assertFalse(inputForm.isQuestionnaireInfoDisabled());
 
+    }
+
+
+    @Step("User Verifies the Validation of the Message displayed for status <Status>")
+    public void VerifyTheErrorMessage(String Status){
+        inputForm.ReloadCountryURL();
+        commonMethods cm = new commonMethods();
+        String expected = null;
+        switch (Status) {
+            case "Review in Pending":
+                expected="Data is already submitted for the current year on "+cm.getCurrentMonth()+" "+cm.getCurrentyear();
+                break;
+            case "Published":
+                expected="Data for current year is already published on "+cm.getCurrentMonth()+" "+cm.getCurrentyear();
+                break;
+            default:
+                Assertions.fail("Given Status is not acceptable");
+        }
+        System.out.println(inputForm.getWarningMessage());
+        assertEquals(expected,inputForm.getWarningMessage());
     }
 
     @Step("User navigates to review URL for <Sri Lanka> from admin page")

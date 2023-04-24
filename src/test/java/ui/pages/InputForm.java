@@ -1,5 +1,8 @@
 package ui.pages;
 
+import api.common.commonMethods;
+import com.thoughtworks.gauge.datastore.SpecDataStore;
+import org.assertj.core.api.Assertions;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -125,6 +128,12 @@ public class InputForm extends BasePage {
     @FindBy(xpath = "//div[normalize-space()='Leadership & Governance']")
     private WebElement leadershipTab;
 
+    @FindBy(xpath = "//div[@id='info-box']")
+    private WebElement Warningmessage;
+
+    @FindBy(css = ".fa.fa-chevron-circle-up.fa-3x")
+    private WebElement UpArrowbtn;
+
     public InputForm() {
 
         PageFactory.initElements(driver, this);
@@ -138,6 +147,14 @@ public class InputForm extends BasePage {
         sleep(2);
         submitButton.click();
 
+    }
+
+    public void CopyCountryURL(){
+        SpecDataStore.put("Country_questionnaire_url",driver.getCurrentUrl());
+    }
+
+    public void ReloadCountryURL(){
+        driver.get((String) SpecDataStore.get("Country_questionnaire_url"));
     }
 
     public void comfirmSubmit(){
@@ -183,6 +200,8 @@ public class InputForm extends BasePage {
 
     public void enterIndicatorScores(HashMap<String, String> data) {
         System.out.println("inside indicator scores");
+        //UpArrowbtn.click();
+        sleep(2);
         submitBtn.click();
         List<WebElement> indicatorElements = driver.findElements(By.cssSelector("div.accordion.expanded>div.accordion-content>div>div"));
         int counter;
@@ -218,7 +237,7 @@ sleep(1);
     }
 
     public boolean isQuestionnaireFormOpenedFor(String countryName) {
-        String countryPageTitle = "//div[@class='page-title'][contains(text(),'" + countryName + "')]";
+        String countryPageTitle = "//div[@class='page-title']/div[contains(text(),'" + countryName + "')]";
         return waitForElementToBeVisible(By.xpath(countryPageTitle)).isDisplayed();
     }
 
@@ -231,7 +250,7 @@ sleep(1);
         }
 
     public boolean isFormReadOnly() {
-
+        sleep(1);
         return dataEntryName.isEnabled();
     }
 
@@ -239,6 +258,10 @@ sleep(1);
         sleep(1);
         leadershipTab.click();
         return questionRationaleText.isEnabled();
+    }
+
+    public String getWarningMessage(){
+      return Warningmessage.getText();
     }
 
     public void navigateToReviewURLOf(String countryName) {
@@ -296,7 +319,7 @@ sleep(1);
     }
 
     public boolean isPublishSuccess() {
-        //sleep(2);
+        sleep(1);
         return publishSuccessMessage.isDisplayed();
 
     }
