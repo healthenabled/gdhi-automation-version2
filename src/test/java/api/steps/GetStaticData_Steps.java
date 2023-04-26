@@ -6,6 +6,9 @@ import com.thoughtworks.gauge.Table;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
+import java.util.ArrayList;
+
+
 import static org.junit.jupiter.api.Assertions.*;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
@@ -49,5 +52,20 @@ public class GetStaticData_Steps extends ApiBaseStep {
         assertTrue(((jsonobj.getInt("overAllScore") >0) && jsonobj.getInt("overAllScore")<8));
         JSONArray jsonarray = new JSONArray(jsonobj.getJSONArray("categories"));
         assertEquals(jsonarray.length(),count);
+    }
+
+    @Step("and response should include below regions <table>")
+    public void validateregions(Table table){
+        JSONArray jsonarray = new JSONArray(response.getBody().asString());
+        Gauge.writeMessage("No of Regions =>" + response.prettyPrint());
+        ArrayList<String> actualIds = new ArrayList<>();
+        ArrayList<String> RegionNames = new ArrayList<>();
+        for (Object arr : jsonarray) {
+            JSONObject jsonObj = (JSONObject) arr;
+            actualIds.add(jsonObj.getString("regionId"));
+            RegionNames.add(jsonObj.getString("regionName"));
+        }
+        assertEquals(table.getColumnValues("id"),actualIds);
+        assertEquals(table.getColumnValues("RegionName"),RegionNames);
     }
 }
