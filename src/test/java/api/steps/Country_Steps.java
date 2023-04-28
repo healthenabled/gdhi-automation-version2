@@ -185,4 +185,29 @@ public class Country_Steps extends ApiBaseStep{
 
     }
 
+    @Step("Verify the Country for Published Years")
+    public void VerifyPublsihedYears(){
+        Gauge.writeMessage(response.prettyPrint());
+        JSONArray array = new JSONArray(response.getBody().asString());
+        assertEquals(array.get(0),String.valueOf(cm.getCurrentyear()));
+    }
+
+    @Step("Verify the Country progress over the years data")
+    public void VerifyCountryProgress(){
+        JSONObject jsonobj = new JSONObject(response.getBody().asString());
+        JSONArray yeararray = jsonobj.getJSONArray("yearOnYearData");
+        for(Object obj : yeararray){
+            JSONObject data = (JSONObject) obj;
+            if(data.getString("year").equals(String.valueOf(cm.getCurrentyear()))) {
+                assertEquals(data.getString("year"), String.valueOf(cm.getCurrentyear()));
+                JSONObject overall = data.getJSONObject("data");
+                JSONObject countryobj = overall.getJSONObject("country");
+                JSONObject averageobj = overall.getJSONObject("average");
+                assertTrue(countryobj.get("countryPhase") instanceof Integer);
+                assertTrue(averageobj.get("overAllScore") instanceof Integer);
+                break;
+            }
+        }
+    }
+
 }

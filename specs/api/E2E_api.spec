@@ -92,3 +92,15 @@ User Verifies the Overall Countries Health indicator
 * Then the Status code should be "200"
 * Verify the Country  data is Displayed overall indicators data
 
+User Verifies the Published Countries years and Country Progress Over years
+----------------
+* Given the "PUBLISHED_YEARS" exists in the "GDHI_Endpoint"
+* Send the "GET" request to "PUBLISHED_YEARS" with "CountryCode" as "QUERY" parameter
+* Then the Status code should be "200"
+* Verify the Country for Published Years
+
+* Given the "COUNTRY_PROGRESS_OVER_YEARS" exists in the "GDHI_Endpoint"
+* Send the "GET" request to "COUNTRY_PROGRESS_OVER_YEARS" with "CountryCode" as "QUERY" parameter
+* Then the Status code should be "200"
+* Verify the Country progress over the years data
+
