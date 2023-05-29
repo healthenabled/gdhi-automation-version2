@@ -1,9 +1,21 @@
 package ui.pages;
 
+import org.apache.commons.io.FileUtils;
+import org.junit.Assert;
+import org.openqa.selenium.OutputType;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
+import ru.yandex.qatools.ashot.AShot;
+import ru.yandex.qatools.ashot.Screenshot;
+import ru.yandex.qatools.ashot.comparison.ImageDiff;
+import ru.yandex.qatools.ashot.comparison.ImageDiffer;
+import ru.yandex.qatools.ashot.coordinates.WebDriverCoordsProvider;
 
+import javax.imageio.ImageIO;
+import java.awt.image.BufferedImage;
+import java.io.File;
+import java.io.IOException;
 import java.util.HashMap;
 
 public class CountryPage extends BasePage {
@@ -35,6 +47,12 @@ public class CountryPage extends BasePage {
     @FindBy(xpath = "//ul[@class='country-text']")
     private WebElement resourcesSection;
 
+    @FindBy(xpath = "//div[@class='phase-overview box']")
+    private static WebElement SpiderImage;
+
+    @FindBy(xpath = "//div[@class='comparison-graph-panel']")
+    private static WebElement LineGraph;
+
 
     public CountryPage() {
         PageFactory.initElements(driver, this);
@@ -55,5 +73,53 @@ public class CountryPage extends BasePage {
         isValid = isValid && resourcesText.getText().equalsIgnoreCase(data.get("resourcesText"));
         isValid = isValid && isElementVisible(resourcesSection);
         return isValid;
+    }
+
+    public void ExpectedSpiderGraph() throws IOException {
+        focusOnElement(SpiderImage);
+        File actual = SpiderImage.getScreenshotAs(OutputType.FILE);
+        FileUtils.copyFile(actual, new File(System.getProperty("user.dir") +"/Images/SpiderGraph.png"));
+    }
+
+    public void ExpectedLineGraph() throws IOException {
+        focusOnElement(LineGraph);
+        File actual = LineGraph.getScreenshotAs(OutputType.FILE);
+        FileUtils.copyFile(actual, new File(System.getProperty("user.dir") +"/Images/LineGraph.png"));
+    }
+
+    public boolean isSpidergraphValid() throws IOException {
+
+        focusOnElement(SpiderImage);
+        File actual = SpiderImage.getScreenshotAs(OutputType.FILE);
+        BufferedImage expectedImage = ImageIO.read(
+                new File(System.getProperty("user.dir") +"/Images/SpiderGraph.png"));
+        BufferedImage actualImage = ImageIO.read(actual);
+        ImageDiffer imgDiff = new ImageDiffer();
+        ImageDiff diff = imgDiff.makeDiff(actualImage, expectedImage);
+        ImageDiff dif = diff.withDiffSizeTrigger(2500);
+
+        System.out.println(diff.hasDiff());
+        System.out.println(diff.getDiffSize());
+        ImageIO.write(diff.getDiffImage(), "png", new File(System.getProperty("user.dir") +"/Images/spiderdiff.png"));
+
+        return diff.hasDiff();
+    }
+
+    public boolean isLinegraphValid() throws IOException {
+
+        focusOnElement(LineGraph);
+        File actual = LineGraph.getScreenshotAs(OutputType.FILE);
+        BufferedImage expectedImage = ImageIO.read(
+                new File(System.getProperty("user.dir") +"/Images/LineGraph.png"));
+        BufferedImage actualImage = ImageIO.read(actual);
+        ImageDiffer imgDiff = new ImageDiffer();
+        ImageDiff diff = imgDiff.makeDiff(actualImage, expectedImage);
+        ImageDiff dif = diff.withDiffSizeTrigger(2500);
+
+        System.out.println(diff.hasDiff());
+        System.out.println(diff.getDiffSize());
+        ImageIO.write(diff.getDiffImage(), "png", new File(System.getProperty("user.dir") +"/Images/spiderdiff.png"));
+
+        return diff.hasDiff();
     }
 }

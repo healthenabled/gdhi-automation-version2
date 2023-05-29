@@ -1,6 +1,7 @@
 package api.steps;
 
 import api.common.commonMethods;
+import com.thoughtworks.gauge.Gauge;
 import com.thoughtworks.gauge.Step;
 import io.restassured.RestAssured;
 import io.restassured.response.Response;
@@ -49,9 +50,12 @@ public class ApiBaseStep {
         if(type.equals("UUID")){
             url_path = System.getenv(endpoint).toString().
                     replace("REPLACE_TEXT",SpecDataStore.get("uuid").toString());
-        }else{
+        }else if(type.equals("CountryCode")){
             url_path = System.getenv(endpoint).toString().
                     replace("REPLACE_TEXT",SpecDataStore.get("Country3Code").toString());
+        }else{
+            url_path = System.getenv(endpoint).toString().
+                    replace("REPLACE_TEXT",type);
         }
         switch (method) {
             case "GET":
@@ -103,5 +107,10 @@ public class ApiBaseStep {
     @Step("Add Query Paremeter <header> and value <value>")
     public void addqueryParameter(String key, String Value){
         requestSpecification.queryParam(key,Value);
+    }
+
+    @Step("Write the Respone to Report")
+    public void WriteresponseToReport(){
+        Gauge.writeMessage(response.prettyPrint());
     }
 }

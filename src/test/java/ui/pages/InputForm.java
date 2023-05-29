@@ -203,7 +203,7 @@ public class InputForm extends BasePage {
         //UpArrowbtn.click();
         sleep(2);
         submitBtn.click();
-        List<WebElement> indicatorElements = driver.findElements(By.cssSelector("div.accordion.expanded>div.accordion-content>div>div"));
+        List<WebElement> indicatorElements = driver.findElements(By.cssSelector("div.accordion-indicator.expanded>div.accordion-content>div>div"));
         int counter;
         for (WebElement indicatorElement : indicatorElements) {
 
@@ -251,6 +251,7 @@ sleep(1);
 
     public boolean isFormReadOnly() {
         sleep(1);
+        waitForElementToBeVisible(dataEntryName);
         return dataEntryName.isEnabled();
     }
 
@@ -268,6 +269,7 @@ sleep(1);
 //        String reviewURL=countryURL.concat("/review");
 //        System.out.println("REview URL is.... "+reviewURL);
 //        visitUrl(reviewURL);
+        focusOnElement(reviewBtnForCountry);
         reviewBtnForCountry.click();
         ArrayList tabs = new ArrayList(driver.getWindowHandles());
         System.out.println(tabs.size());

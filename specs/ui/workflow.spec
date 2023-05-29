@@ -35,4 +35,9 @@ This scenario verifies the various functionalities related to the overall digita
 ////* User goes the country details page
 * User should see the data they have submitted for "Sri Lanka" and score "3"
 ////* User should see the footer information
+
+//## User Verifies the Spider and line graph in country's page.
+//* Create Base Images
+//* User Verifies the spider graph in the countryPage
+//* User Verifies the line graph in the countryPage
 * Close the Browser

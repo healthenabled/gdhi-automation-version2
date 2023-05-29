@@ -9,7 +9,9 @@ import io.restassured.response.Response;
 import org.json.JSONArray;
 import org.json.JSONObject;
 import ui.data.DataFactory;
+import ui.pages.CountryPage;
 
+import java.io.IOException;
 import java.util.ArrayList;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -45,7 +47,7 @@ public class CountryPageSteps extends BaseStep {
     @Step("User should see the <Sri Lanka> and <3> in list of published countries page along with phase")
     public void verifyPublishedCountryDisplayedInList(String countryName, String countryScore) {
         listOfCountriesPage.iscountryNameDisplayed(countryName);
-        listOfCountriesPage.iscountryScoreDisplayed(countryScore);
+        listOfCountriesPage.iscountryScoreDisplayed(countryScore,countryName);
     }
 
     @Step("User navigates to country details page for <Sri Lanka>")
@@ -68,5 +70,22 @@ listOfCountriesPage.navigateToCountryPage(countryName);
         System.out.println("Expected countries ::: "+countries);
         System.out.println("Actual countries :::" +listOfCountriesPage.getActualListOfCounties());
         assertTrue((countries.containsAll(listOfCountriesPage.getActualListOfCounties())));
+    }
+
+
+    @Step("Create Base Images")
+    public void createbaseimage() throws IOException {
+        countryPage.ExpectedSpiderGraph();
+        countryPage.ExpectedLineGraph();
+    }
+
+    @Step("User Verifies the spider graph in the countryPage")
+    public void ValidateSpidergraph() throws IOException {
+        assertFalse(countryPage.isSpidergraphValid());
+    }
+
+    @Step("User Verifies the line graph in the countryPage")
+    public void ValidateLinegraph() throws IOException {
+        assertFalse(countryPage.isLinegraphValid());
     }
 }

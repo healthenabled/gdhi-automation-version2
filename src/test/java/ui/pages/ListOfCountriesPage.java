@@ -37,19 +37,21 @@ public class ListOfCountriesPage extends BasePage {
         return isElementVisible(countriesList);
     }
 
-    public boolean iscountryScoreDisplayed(String countryScore) {
-        return isElementVisible(driver.findElement(By.xpath("//span[@class='country-name'][text()='Sri Lanka']" +
+    public boolean iscountryScoreDisplayed(String countryScore, String countryName) {
+        return isElementVisible(driver.findElement(By.xpath("//span[@class='country-name'][text()='"+countryName+"']" +
                 "/parent::li/span[1][text()='"+countryScore+"']")));
     }
 
     public boolean iscountryNameDisplayed(String countryName) {
-        return isElementVisible(countryNameText);
+        return isElementVisible(driver.findElement(By.xpath("//span[@class='country-name'][text()='"+countryName+"']")));
     }
 
 
     public void navigateToCountryPage(String countryName) {
-        countryNameText.click();
-        waitForElementToBeVisible(countryPageTitle);
+        driver.findElement(By.xpath("//span[@class='country-name'][text()='"+countryName+"']"))
+                .click();
+        waitForElementToBeVisible(driver
+                .findElement(By.xpath("//div[@class='country-name page-title']/div[contains(text(),'"+countryName+"')]")));
     }
 
     public List getActualListOfCounties() {

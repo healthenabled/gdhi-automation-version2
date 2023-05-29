@@ -19,3 +19,17 @@ Validate Regions indicators
  |WPRO  |Western Pacific Region      |
  |SEARO |South-East Asian Region     |
  |EMRO  |Eastern Mediterranean Region|
+
+Validate Regions Get Years
+----------------
+* Given the "REGION_GET_YEARS" exists in the "GDHI_Endpoint"
+* Send the "GET" request to "REGION_GET_YEARS" with "SEARO" as "path" parameter
+* Then the Status code should be "200"
+* Write the Respone to Report
+
+Validate Regions Get Data
+----------------
+* Given the "REGION_GET_DATA" exists in the "GDHI_Endpoint"
+* Send the "GET" request to "REGION_GET_DATA" with "PAHO" as "path" parameter
+* Then the Status code should be "200"
+* Write the Respone to Report
