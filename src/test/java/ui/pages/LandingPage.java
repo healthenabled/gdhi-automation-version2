@@ -45,7 +45,7 @@ public class LandingPage extends BasePage {
     @FindBy(css = "//div[@class='footer']//span/a[@href='/api/export_global_data']")
     private WebElement exportGlobalDataLink;
 
-    @FindBy(xpath = "//span[@class='logo-name hd-element']")
+    @FindBy(xpath = "//span[normalize-space()='World Map']")
     private WebElement HomePageHeader;
 
     public LandingPage() {
